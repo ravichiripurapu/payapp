@@ -1,0 +1,75 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPayrollEmployeeLabel">Create or edit a Payroll Employee</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!payrollEmployee.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="payrollEmployee.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companySchedule">Company Schedule</label>
+            <input type="text" class="form-control" name="companySchedule" id="field_companySchedule"
+                [(ngModel)]="payrollEmployee.companySchedule" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_incomeTaxState">Income Tax State</label>
+            <input type="text" class="form-control" name="incomeTaxState" id="field_incomeTaxState"
+                [(ngModel)]="payrollEmployee.incomeTaxState" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_unemploymentState">Unemployment State</label>
+            <input type="text" class="form-control" name="unemploymentState" id="field_unemploymentState"
+                [(ngModel)]="payrollEmployee.unemploymentState" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_netPay">Net Pay</label>
+            <input type="number" class="form-control" name="netPay" id="field_netPay"
+                [(ngModel)]="payrollEmployee.netPay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_payStub">Pay Stub</label>
+            <input type="text" class="form-control" name="payStub" id="field_payStub"
+                [(ngModel)]="payrollEmployee.payStub" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companyCode">Company Code</label>
+            <input type="text" class="form-control" name="companyCode" id="field_companyCode"
+                [(ngModel)]="payrollEmployee.companyCode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employeeCode">Employee Code</label>
+            <input type="text" class="form-control" name="employeeCode" id="field_employeeCode"
+                [(ngModel)]="payrollEmployee.employeeCode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="payrollEmployee.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="payrollEmployee.createdBy" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

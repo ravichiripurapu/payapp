@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Companies</span>
+        <button class="btn btn-primary float-right jh-create-entity create-company" [routerLink]="['/', { outlets: { popup: ['company-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Company
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="companies">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Company Name</span></th>
+            <th><span>Website</span></th>
+            <th><span>Fein</span></th>
+            <th><span>Default Full Time Hours</span></th>
+            <th><span>Default Part Time Hours</span></th>
+            <th><span>Default Temporary Hours</span></th>
+            <th><span>Payroll Frequency</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let company of companies ;trackBy: trackId">
+                <td><a [routerLink]="['../company', company.id ]">{{company.id}}</a></td>
+                <td>{{company.companyName}}</td>
+                <td>{{company.website}}</td>
+                <td>{{company.fein}}</td>
+                <td>{{company.defaultFullTimeHours}}</td>
+                <td>{{company.defaultPartTimeHours}}</td>
+                <td>{{company.defaultTemporaryHours}}</td>
+                <td>{{company.payrollFrequency}}</td>
+                <td>{{company.createdDate | date:'mediumDate'}}</td>
+                <td>{{company.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../company', company.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

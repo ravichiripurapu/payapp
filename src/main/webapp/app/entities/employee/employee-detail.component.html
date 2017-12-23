@@ -1,0 +1,94 @@
+
+<div *ngIf="employee">
+    <h2><span>Employee</span> {{employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{employee.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{employee.lastName}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{employee.email}}</span>
+        </dd>
+        <dt><span>Mobile Phone Number</span></dt>
+        <dd>
+            <span>{{employee.mobilePhoneNumber}}</span>
+        </dd>
+        <dt><span>Home Phone Number</span></dt>
+        <dd>
+            <span>{{employee.homePhoneNumber}}</span>
+        </dd>
+        <dt><span>Dob</span></dt>
+        <dd>
+            <span>{{employee.dob | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Ssn</span></dt>
+        <dd>
+            <span>{{employee.ssn}}</span>
+        </dd>
+        <dt><span>Job Title</span></dt>
+        <dd>
+            <span>{{employee.jobTitle}}</span>
+        </dd>
+        <dt><span>Gender</span></dt>
+        <dd>
+            <span>{{employee.gender}}</span>
+        </dd>
+        <dt><span>Marital Status</span></dt>
+        <dd>
+            <span>{{employee.maritalStatus}}</span>
+        </dd>
+        <dt><span>Employee Number</span></dt>
+        <dd>
+            <span>{{employee.employeeNumber}}</span>
+        </dd>
+        <dt><span>Hire Date</span></dt>
+        <dd>
+            <span>{{employee.hireDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Work Phone Number</span></dt>
+        <dd>
+            <span>{{employee.workPhoneNumber}}</span>
+        </dd>
+        <dt><span>Employee Type</span></dt>
+        <dd>
+            <span>{{employee.employeeType}}</span>
+        </dd>
+        <dt><span>Department</span></dt>
+        <dd>
+            <span>{{employee.department}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{employee.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{employee.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{employee.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

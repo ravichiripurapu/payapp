@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "checkDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "periodEnd",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "periodStart",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "approveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "paymentStatus",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "companyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053457",
+    "entityTableName": "payroll_schedule",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

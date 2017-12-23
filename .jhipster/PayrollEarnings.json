@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "earningsCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hours",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "periodAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "ytdAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "companyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employeeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053500",
+    "entityTableName": "payroll_earnings",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,58 @@
+
+<div *ngIf="payrollEmployee">
+    <h2><span>Payroll Employee</span> {{payrollEmployee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Company Schedule</span></dt>
+        <dd>
+            <span>{{payrollEmployee.companySchedule}}</span>
+        </dd>
+        <dt><span>Income Tax State</span></dt>
+        <dd>
+            <span>{{payrollEmployee.incomeTaxState}}</span>
+        </dd>
+        <dt><span>Unemployment State</span></dt>
+        <dd>
+            <span>{{payrollEmployee.unemploymentState}}</span>
+        </dd>
+        <dt><span>Net Pay</span></dt>
+        <dd>
+            <span>{{payrollEmployee.netPay}}</span>
+        </dd>
+        <dt><span>Pay Stub</span></dt>
+        <dd>
+            <span>{{payrollEmployee.payStub}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{payrollEmployee.companyCode}}</span>
+        </dd>
+        <dt><span>Employee Code</span></dt>
+        <dd>
+            <span>{{payrollEmployee.employeeCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{payrollEmployee.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{payrollEmployee.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'payroll-employee/'+ payrollEmployee.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,54 @@
+
+<div *ngIf="companyBank">
+    <h2><span>Company Bank</span> {{companyBank.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Account Type</span></dt>
+        <dd>
+            <span>{{companyBank.accountType}}</span>
+        </dd>
+        <dt><span>Routing Number</span></dt>
+        <dd>
+            <span>{{companyBank.routingNumber}}</span>
+        </dd>
+        <dt><span>Account Number</span></dt>
+        <dd>
+            <span>{{companyBank.accountNumber}}</span>
+        </dd>
+        <dt><span>Bank Name</span></dt>
+        <dd>
+            <span>{{companyBank.bankName}}</span>
+        </dd>
+        <dt><span>Percent Deposit</span></dt>
+        <dd>
+            <span>{{companyBank.percentDeposit}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{companyBank.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{companyBank.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{companyBank.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'company-bank/'+ companyBank.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPayrollSummaryLabel">Create or edit a Payroll Summary</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!payrollSummary.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="payrollSummary.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_directDepositAmount">Direct Deposit Amount</label>
+            <input type="number" class="form-control" name="directDepositAmount" id="field_directDepositAmount"
+                [(ngModel)]="payrollSummary.directDepositAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_paidByCheckAmount">Paid By Check Amount</label>
+            <input type="number" class="form-control" name="paidByCheckAmount" id="field_paidByCheckAmount"
+                [(ngModel)]="payrollSummary.paidByCheckAmount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employeeDeductions">Employee Deductions</label>
+            <input type="number" class="form-control" name="employeeDeductions" id="field_employeeDeductions"
+                [(ngModel)]="payrollSummary.employeeDeductions" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employerDeductions">Employer Deductions</label>
+            <input type="number" class="form-control" name="employerDeductions" id="field_employerDeductions"
+                [(ngModel)]="payrollSummary.employerDeductions" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employeeTaxes">Employee Taxes</label>
+            <input type="number" class="form-control" name="employeeTaxes" id="field_employeeTaxes"
+                [(ngModel)]="payrollSummary.employeeTaxes" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employerTaxes">Employer Taxes</label>
+            <input type="number" class="form-control" name="employerTaxes" id="field_employerTaxes"
+                [(ngModel)]="payrollSummary.employerTaxes" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_payrollProcessingFee">Payroll Processing Fee</label>
+            <input type="number" class="form-control" name="payrollProcessingFee" id="field_payrollProcessingFee"
+                [(ngModel)]="payrollSummary.payrollProcessingFee" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_totalCashRequirements">Total Cash Requirements</label>
+            <input type="number" class="form-control" name="totalCashRequirements" id="field_totalCashRequirements"
+                [(ngModel)]="payrollSummary.totalCashRequirements" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companyCode">Company Code</label>
+            <input type="text" class="form-control" name="companyCode" id="field_companyCode"
+                [(ngModel)]="payrollSummary.companyCode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="payrollSummary.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="payrollSummary.createdBy" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<div>
+    <h2>
+        <span>Deduction Sub Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-deduction-sub-type" [routerLink]="['/', { outlets: { popup: ['deduction-sub-type-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Deduction Sub Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="deductionSubTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let deductionSubType of deductionSubTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../deduction-sub-type', deductionSubType.id ]">{{deductionSubType.id}}</a></td>
+                <td>{{deductionSubType.name}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../deduction-sub-type', deductionSubType.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'deduction-sub-type/'+ deductionSubType.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'deduction-sub-type/'+ deductionSubType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

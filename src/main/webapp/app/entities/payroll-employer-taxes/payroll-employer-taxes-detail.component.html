@@ -1,0 +1,50 @@
+
+<div *ngIf="payrollEmployerTaxes">
+    <h2><span>Payroll Employer Taxes</span> {{payrollEmployerTaxes.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tax Code</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.taxCode}}</span>
+        </dd>
+        <dt><span>Period Amount</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.periodAmount}}</span>
+        </dd>
+        <dt><span>Ytd Amount</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.ytdAmount}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.companyCode}}</span>
+        </dd>
+        <dt><span>Employee Code</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.employeeCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{payrollEmployerTaxes.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'payroll-employer-taxes/'+ payrollEmployerTaxes.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

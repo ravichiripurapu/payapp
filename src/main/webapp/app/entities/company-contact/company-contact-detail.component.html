@@ -1,0 +1,70 @@
+
+<div *ngIf="companyContact">
+    <h2><span>Company Contact</span> {{companyContact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{companyContact.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{companyContact.lastName}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{companyContact.email}}</span>
+        </dd>
+        <dt><span>Mobile Phone</span></dt>
+        <dd>
+            <span>{{companyContact.mobilePhone}}</span>
+        </dd>
+        <dt><span>Home Phone</span></dt>
+        <dd>
+            <span>{{companyContact.homePhone}}</span>
+        </dd>
+        <dt><span>Dob</span></dt>
+        <dd>
+            <span>{{companyContact.dob | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Ssn</span></dt>
+        <dd>
+            <span>{{companyContact.ssn}}</span>
+        </dd>
+        <dt><span>Company Contact Type</span></dt>
+        <dd>
+            <span>{{companyContact.companyContactType}}</span>
+        </dd>
+        <dt><span>Verification Code</span></dt>
+        <dd>
+            <span>{{companyContact.verificationCode}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{companyContact.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{companyContact.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{companyContact.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'company-contact/'+ companyContact.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

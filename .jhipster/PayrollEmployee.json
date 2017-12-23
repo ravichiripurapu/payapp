@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "companySchedule",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "incomeTaxState",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unemploymentState",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "netPay",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "payStub",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "companyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employeeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053459",
+    "entityTableName": "payroll_employee",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

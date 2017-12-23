@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Company Earnings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-company-earning" [routerLink]="['/', { outlets: { popup: ['company-earning-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Company Earning
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="companyEarnings">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Desc</span></th>
+            <th><span>Abbreviation</span></th>
+            <th><span>Company Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let companyEarning of companyEarnings ;trackBy: trackId">
+                <td><a [routerLink]="['../company-earning', companyEarning.id ]">{{companyEarning.id}}</a></td>
+                <td>{{companyEarning.name}}</td>
+                <td>{{companyEarning.desc}}</td>
+                <td>{{companyEarning.abbreviation}}</td>
+                <td>{{companyEarning.companyCode}}</td>
+                <td>{{companyEarning.createdDate | date:'mediumDate'}}</td>
+                <td>{{companyEarning.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../company-earning', companyEarning.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarning.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarning.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

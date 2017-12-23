@@ -1,0 +1,50 @@
+
+<div *ngIf="companyDeduction">
+    <h2><span>Company Deduction</span> {{companyDeduction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{companyDeduction.name}}</span>
+        </dd>
+        <dt><span>Desc</span></dt>
+        <dd>
+            <span>{{companyDeduction.desc}}</span>
+        </dd>
+        <dt><span>Deduction Type</span></dt>
+        <dd>
+            <span>{{companyDeduction.deductionType}}</span>
+        </dd>
+        <dt><span>Deduction Sub Type</span></dt>
+        <dd>
+            <span>{{companyDeduction.deductionSubType}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{companyDeduction.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{companyDeduction.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{companyDeduction.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'company-deduction/'+ companyDeduction.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

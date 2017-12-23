@@ -1,0 +1,58 @@
+
+<div *ngIf="company">
+    <h2><span>Company</span> {{company.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Company Name</span></dt>
+        <dd>
+            <span>{{company.companyName}}</span>
+        </dd>
+        <dt><span>Website</span></dt>
+        <dd>
+            <span>{{company.website}}</span>
+        </dd>
+        <dt><span>Fein</span></dt>
+        <dd>
+            <span>{{company.fein}}</span>
+        </dd>
+        <dt><span>Default Full Time Hours</span></dt>
+        <dd>
+            <span>{{company.defaultFullTimeHours}}</span>
+        </dd>
+        <dt><span>Default Part Time Hours</span></dt>
+        <dd>
+            <span>{{company.defaultPartTimeHours}}</span>
+        </dd>
+        <dt><span>Default Temporary Hours</span></dt>
+        <dd>
+            <span>{{company.defaultTemporaryHours}}</span>
+        </dd>
+        <dt><span>Payroll Frequency</span></dt>
+        <dd>
+            <span>{{company.payrollFrequency}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{company.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{company.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'company/'+ company.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

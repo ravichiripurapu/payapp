@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "directDepositAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "paidByCheckAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employeeDeductions",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employerDeductions",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employeeTaxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employerTaxes",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "payrollProcessingFee",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "totalCashRequirements",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "companyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053458",
+    "entityTableName": "payroll_summary",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

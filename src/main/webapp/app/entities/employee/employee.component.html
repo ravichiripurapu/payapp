@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span>Employees</span>
+        <button class="btn btn-primary float-right jh-create-entity create-employee" [routerLink]="['/', { outlets: { popup: ['employee-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Employee
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="employees">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>First Name</span></th>
+            <th><span>Last Name</span></th>
+            <th><span>Email</span></th>
+            <th><span>Mobile Phone Number</span></th>
+            <th><span>Home Phone Number</span></th>
+            <th><span>Dob</span></th>
+            <th><span>Ssn</span></th>
+            <th><span>Job Title</span></th>
+            <th><span>Gender</span></th>
+            <th><span>Marital Status</span></th>
+            <th><span>Employee Number</span></th>
+            <th><span>Hire Date</span></th>
+            <th><span>Work Phone Number</span></th>
+            <th><span>Employee Type</span></th>
+            <th><span>Department</span></th>
+            <th><span>Company Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employee of employees ;trackBy: trackId">
+                <td><a [routerLink]="['../employee', employee.id ]">{{employee.id}}</a></td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.mobilePhoneNumber}}</td>
+                <td>{{employee.homePhoneNumber}}</td>
+                <td>{{employee.dob | date:'mediumDate'}}</td>
+                <td>{{employee.ssn}}</td>
+                <td>{{employee.jobTitle}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.maritalStatus}}</td>
+                <td>{{employee.employeeNumber}}</td>
+                <td>{{employee.hireDate | date:'mediumDate'}}</td>
+                <td>{{employee.workPhoneNumber}}</td>
+                <td>{{employee.employeeType}}</td>
+                <td>{{employee.department}}</td>
+                <td>{{employee.companyCode}}</td>
+                <td>{{employee.createdDate | date:'mediumDate'}}</td>
+                <td>{{employee.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../employee', employee.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

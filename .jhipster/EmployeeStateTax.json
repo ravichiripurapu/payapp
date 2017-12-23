@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "filingStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "exemptFromWithHolding",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "exemptFromSUI",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "exemptFromFUTA",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "futaExemptReason",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "allowances",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "extraWithHolding",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employeeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053450",
+    "entityTableName": "employee_state_tax",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

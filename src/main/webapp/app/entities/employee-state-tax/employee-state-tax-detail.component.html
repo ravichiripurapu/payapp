@@ -1,0 +1,66 @@
+
+<div *ngIf="employeeStateTax">
+    <h2><span>Employee State Tax</span> {{employeeStateTax.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{employeeStateTax.state}}</span>
+        </dd>
+        <dt><span>Filing Status</span></dt>
+        <dd>
+            <span>{{employeeStateTax.filingStatus}}</span>
+        </dd>
+        <dt><span>Exempt From With Holding</span></dt>
+        <dd>
+            <span>{{employeeStateTax.exemptFromWithHolding}}</span>
+        </dd>
+        <dt><span>Exempt From SUI</span></dt>
+        <dd>
+            <span>{{employeeStateTax.exemptFromSUI}}</span>
+        </dd>
+        <dt><span>Exempt From FUTA</span></dt>
+        <dd>
+            <span>{{employeeStateTax.exemptFromFUTA}}</span>
+        </dd>
+        <dt><span>Futa Exempt Reason</span></dt>
+        <dd>
+            <span>{{employeeStateTax.futaExemptReason}}</span>
+        </dd>
+        <dt><span>Allowances</span></dt>
+        <dd>
+            <span>{{employeeStateTax.allowances}}</span>
+        </dd>
+        <dt><span>Extra With Holding</span></dt>
+        <dd>
+            <span>{{employeeStateTax.extraWithHolding}}</span>
+        </dd>
+        <dt><span>Employee Code</span></dt>
+        <dd>
+            <span>{{employeeStateTax.employeeCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{employeeStateTax.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{employeeStateTax.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee-state-tax/'+ employeeStateTax.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

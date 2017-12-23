@@ -1,0 +1,66 @@
+
+<div *ngIf="payrollSummary">
+    <h2><span>Payroll Summary</span> {{payrollSummary.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Direct Deposit Amount</span></dt>
+        <dd>
+            <span>{{payrollSummary.directDepositAmount}}</span>
+        </dd>
+        <dt><span>Paid By Check Amount</span></dt>
+        <dd>
+            <span>{{payrollSummary.paidByCheckAmount}}</span>
+        </dd>
+        <dt><span>Employee Deductions</span></dt>
+        <dd>
+            <span>{{payrollSummary.employeeDeductions}}</span>
+        </dd>
+        <dt><span>Employer Deductions</span></dt>
+        <dd>
+            <span>{{payrollSummary.employerDeductions}}</span>
+        </dd>
+        <dt><span>Employee Taxes</span></dt>
+        <dd>
+            <span>{{payrollSummary.employeeTaxes}}</span>
+        </dd>
+        <dt><span>Employer Taxes</span></dt>
+        <dd>
+            <span>{{payrollSummary.employerTaxes}}</span>
+        </dd>
+        <dt><span>Payroll Processing Fee</span></dt>
+        <dd>
+            <span>{{payrollSummary.payrollProcessingFee}}</span>
+        </dd>
+        <dt><span>Total Cash Requirements</span></dt>
+        <dd>
+            <span>{{payrollSummary.totalCashRequirements}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{payrollSummary.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{payrollSummary.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{payrollSummary.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'payroll-summary/'+ payrollSummary.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

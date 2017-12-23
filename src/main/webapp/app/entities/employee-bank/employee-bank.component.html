@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Employee Banks</span>
+        <button class="btn btn-primary float-right jh-create-entity create-employee-bank" [routerLink]="['/', { outlets: { popup: ['employee-bank-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Employee Bank
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="employeeBanks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Account Type</span></th>
+            <th><span>Routing Number</span></th>
+            <th><span>Account Number</span></th>
+            <th><span>Bank Name</span></th>
+            <th><span>Percent Deposit</span></th>
+            <th><span>Employee Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employeeBank of employeeBanks ;trackBy: trackId">
+                <td><a [routerLink]="['../employee-bank', employeeBank.id ]">{{employeeBank.id}}</a></td>
+                <td>{{employeeBank.accountType}}</td>
+                <td>{{employeeBank.routingNumber}}</td>
+                <td>{{employeeBank.accountNumber}}</td>
+                <td>{{employeeBank.bankName}}</td>
+                <td>{{employeeBank.percentDeposit}}</td>
+                <td>{{employeeBank.employeeCode}}</td>
+                <td>{{employeeBank.createdDate | date:'mediumDate'}}</td>
+                <td>{{employeeBank.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../employee-bank', employeeBank.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee-bank/'+ employeeBank.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee-bank/'+ employeeBank.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

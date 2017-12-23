@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "companyName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fein",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultFullTimeHours",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defaultPartTimeHours",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "defaultTemporaryHours",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "payrollFrequency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053437",
+    "entityTableName": "company",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

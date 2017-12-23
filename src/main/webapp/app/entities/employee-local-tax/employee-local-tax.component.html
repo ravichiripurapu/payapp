@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Employee Local Taxes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-employee-local-tax" [routerLink]="['/', { outlets: { popup: ['employee-local-tax-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Employee Local Tax
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="employeeLocalTaxes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Filing Status</span></th>
+            <th><span>Exempt From With Holding</span></th>
+            <th><span>Allowances</span></th>
+            <th><span>Extra With Holding</span></th>
+            <th><span>Employee Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employeeLocalTax of employeeLocalTaxes ;trackBy: trackId">
+                <td><a [routerLink]="['../employee-local-tax', employeeLocalTax.id ]">{{employeeLocalTax.id}}</a></td>
+                <td>{{employeeLocalTax.filingStatus}}</td>
+                <td>{{employeeLocalTax.exemptFromWithHolding}}</td>
+                <td>{{employeeLocalTax.allowances}}</td>
+                <td>{{employeeLocalTax.extraWithHolding}}</td>
+                <td>{{employeeLocalTax.employeeCode}}</td>
+                <td>{{employeeLocalTax.createdDate | date:'mediumDate'}}</td>
+                <td>{{employeeLocalTax.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../employee-local-tax', employeeLocalTax.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee-local-tax/'+ employeeLocalTax.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee-local-tax/'+ employeeLocalTax.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

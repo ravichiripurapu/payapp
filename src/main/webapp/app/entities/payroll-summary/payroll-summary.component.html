@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span>Payroll Summaries</span>
+        <button class="btn btn-primary float-right jh-create-entity create-payroll-summary" [routerLink]="['/', { outlets: { popup: ['payroll-summary-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Payroll Summary
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="payrollSummaries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Direct Deposit Amount</span></th>
+            <th><span>Paid By Check Amount</span></th>
+            <th><span>Employee Deductions</span></th>
+            <th><span>Employer Deductions</span></th>
+            <th><span>Employee Taxes</span></th>
+            <th><span>Employer Taxes</span></th>
+            <th><span>Payroll Processing Fee</span></th>
+            <th><span>Total Cash Requirements</span></th>
+            <th><span>Company Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let payrollSummary of payrollSummaries ;trackBy: trackId">
+                <td><a [routerLink]="['../payroll-summary', payrollSummary.id ]">{{payrollSummary.id}}</a></td>
+                <td>{{payrollSummary.directDepositAmount}}</td>
+                <td>{{payrollSummary.paidByCheckAmount}}</td>
+                <td>{{payrollSummary.employeeDeductions}}</td>
+                <td>{{payrollSummary.employerDeductions}}</td>
+                <td>{{payrollSummary.employeeTaxes}}</td>
+                <td>{{payrollSummary.employerTaxes}}</td>
+                <td>{{payrollSummary.payrollProcessingFee}}</td>
+                <td>{{payrollSummary.totalCashRequirements}}</td>
+                <td>{{payrollSummary.companyCode}}</td>
+                <td>{{payrollSummary.createdDate | date:'mediumDate'}}</td>
+                <td>{{payrollSummary.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../payroll-summary', payrollSummary.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'payroll-summary/'+ payrollSummary.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'payroll-summary/'+ payrollSummary.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

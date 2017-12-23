@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span>Company Locations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-company-location" [routerLink]="['/', { outlets: { popup: ['company-location-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Company Location
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="companyLocations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Address Line 1</span></th>
+            <th><span>Address Line 2</span></th>
+            <th><span>Zip</span></th>
+            <th><span>City</span></th>
+            <th><span>State</span></th>
+            <th><span>Country</span></th>
+            <th><span>Headquarters</span></th>
+            <th><span>Company Code</span></th>
+            <th><span>Created Date</span></th>
+            <th><span>Created By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let companyLocation of companyLocations ;trackBy: trackId">
+                <td><a [routerLink]="['../company-location', companyLocation.id ]">{{companyLocation.id}}</a></td>
+                <td>{{companyLocation.addressLine1}}</td>
+                <td>{{companyLocation.addressLine2}}</td>
+                <td>{{companyLocation.zip}}</td>
+                <td>{{companyLocation.city}}</td>
+                <td>{{companyLocation.state}}</td>
+                <td>{{companyLocation.country}}</td>
+                <td>{{companyLocation.headquarters}}</td>
+                <td>{{companyLocation.companyCode}}</td>
+                <td>{{companyLocation.createdDate | date:'mediumDate'}}</td>
+                <td>{{companyLocation.createdBy}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../company-location', companyLocation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company-location/'+ companyLocation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'company-location/'+ companyLocation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+
+<div *ngIf="annualReports">
+    <h2><span>Annual Reports</span> {{annualReports.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Year</span></dt>
+        <dd>
+            <span>{{annualReports.year}}</span>
+        </dd>
+        <dt><span>Annual Report Type</span></dt>
+        <dd>
+            <span>{{annualReports.annualReportType}}</span>
+        </dd>
+        <dt><span>Annual Report</span></dt>
+        <dd>
+            <span>{{annualReports.annualReport}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{annualReports.companyCode}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{annualReports.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{annualReports.createdBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'annual-reports/'+ annualReports.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

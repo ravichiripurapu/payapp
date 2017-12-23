@@ -1,0 +1,315 @@
+entity MaritalStatus {
+name String
+}
+entity Gender {
+name String
+}
+entity FilingStatus {
+name String
+}
+entity LocalTaxes {
+name String
+}
+entity DepositType {
+name String
+}
+entity BankAccountType {
+name String
+}
+entity EmployeeType {
+name String
+}
+entity FutaExemptReasonCode {
+name String
+}
+entity DepositFrequency {
+name String
+}
+entity CompensationType {
+name String
+}
+entity DeductionType {
+name String
+}
+entity DeductionSubType {
+name String
+}
+entity State {
+name String
+}
+entity CompanyContactType {
+name String
+}
+entity PayrollFrequency {
+name String
+}
+entity Company {
+companyName String,
+website String,
+fein String,
+defaultFullTimeHours Integer,
+defaultPartTimeHours Integer,
+defaultTemporaryHours Integer,
+payrollFrequency String
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyContact {
+firstName String,
+lastName String,
+email String,
+mobilePhone String,
+homePhone String,
+dob LocalDate,
+ssn String,
+companyContactType String,
+verificationCode String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyBank {
+accountType String,
+routingNumber String,
+accountNumber String,
+bankName String,
+percentDeposit Float,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyStateTax {
+stateCode String,
+taxId String,
+rate Float,
+effectiveDate LocalDate,
+status String, depositFrequency String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyLocalTax {
+filingStatus String
+exemptFromWithHolding Boolean,
+allowances Integer,
+extraWithHolding Float,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyDepartment {
+name String,
+departmentCode String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyLocation {
+addressLine1 String,
+addressLine2 String,
+zip String,
+city String,
+state String,
+country String,
+headquarters Boolean,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyEarning {
+name String,
+desc String,
+abbreviation String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyCompensation {
+name String,
+desc String,
+compensationType String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity CompanyDeduction {
+name String,
+desc String,
+deductionType String,
+deductionSubType String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity Employee {
+firstName String,
+lastName String,
+email String,
+mobilePhoneNumber String,
+homePhoneNumber String,
+dob LocalDate,
+ssn String,
+jobTitle String,
+gender String,
+maritalStatus String,
+employeeNumber String,
+hireDate LocalDate,
+workPhoneNumber String,
+employeeType String,
+department String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeBank {
+accountType String,
+routingNumber String,
+accountNumber String,
+bankName String,
+percentDeposit Float,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeFederalTax {
+filingStatusCode String,
+exemptFromWithHolding Boolean,
+allowances Integer,
+extraWithHolding Float,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeStateTax {
+state String,
+filingStatus String,
+exemptFromWithHolding Boolean,
+exemptFromSUI Boolean,
+exemptFromFUTA Boolean,
+futaExemptReason String
+allowances Integer,
+extraWithHolding Float,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeLocalTax {
+filingStatus String
+exemptFromWithHolding Boolean,
+allowances Integer,
+extraWithHolding Float,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeResidenceLocation {
+addressLine1 String,
+addressLine2 String,
+zip String,
+city String,
+state String,
+country String,
+locationCode String,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity EmployeeWorkLocation {
+addressLine1 String,
+addressLine2 String,
+zip String,
+city String,
+state String,
+country String,
+locationCode String,
+employeeCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity W2Reports {
+year Integer,
+w2Report String,
+employeeCode String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity AnnualReports {
+year Integer,
+annualReportType String,
+annualReport String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity QuarterlyReports {
+year Integer,
+quarterNumber Integer,
+quaterlyReport String,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollSchedule {
+checkDate LocalDate,
+periodEnd LocalDate,
+periodStart LocalDate,
+approveDate LocalDate,
+paymentStatus Boolean,
+year Integer,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollSummary {
+directDepositAmount Float,
+paidByCheckAmount Float,
+employeeDeductions Float,
+employerDeductions Float,
+employeeTaxes Float,
+employerTaxes Float,
+payrollProcessingFee Float,
+totalCashRequirements Float,
+companyCode String,
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollEmployee {
+companySchedule String,
+incomeTaxState String,
+unemploymentState String,
+netPay Float,
+payStub String,
+companyCode String,
+employeeCode String
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollEarnings {
+earningsCode String,
+hours Float,
+periodAmount Float,
+ytdAmount Float,
+companyCode String,
+employeeCode String
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollEmployeeTaxes {
+taxCode String,
+periodAmount Float,
+ytdAmount Float,
+companyCode String,
+employeeCode String
+createdDate LocalDate,
+createdBy String
+}
+entity PayrollEmployerTaxes {
+taxCode String,
+periodAmount Float,
+ytdAmount Float,
+companyCode String,
+employeeCode String
+createdDate LocalDate,
+createdBy String
+}

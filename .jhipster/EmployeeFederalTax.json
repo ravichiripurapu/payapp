@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "filingStatusCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "exemptFromWithHolding",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "allowances",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "extraWithHolding",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "employeeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171223053449",
+    "entityTableName": "employee_federal_tax",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

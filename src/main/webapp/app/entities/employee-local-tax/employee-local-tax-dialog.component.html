@@ -1,0 +1,65 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmployeeLocalTaxLabel">Create or edit a Employee Local Tax</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!employeeLocalTax.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="employeeLocalTax.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_filingStatus">Filing Status</label>
+            <input type="text" class="form-control" name="filingStatus" id="field_filingStatus"
+                [(ngModel)]="employeeLocalTax.filingStatus" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_exemptFromWithHolding">Exempt From With Holding</label>
+            <input type="checkbox" class="form-control" name="exemptFromWithHolding" id="field_exemptFromWithHolding"
+                [(ngModel)]="employeeLocalTax.exemptFromWithHolding" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_allowances">Allowances</label>
+            <input type="number" class="form-control" name="allowances" id="field_allowances"
+                [(ngModel)]="employeeLocalTax.allowances" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_extraWithHolding">Extra With Holding</label>
+            <input type="number" class="form-control" name="extraWithHolding" id="field_extraWithHolding"
+                [(ngModel)]="employeeLocalTax.extraWithHolding" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_employeeCode">Employee Code</label>
+            <input type="text" class="form-control" name="employeeCode" id="field_employeeCode"
+                [(ngModel)]="employeeLocalTax.employeeCode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="employeeLocalTax.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="employeeLocalTax.createdBy" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
