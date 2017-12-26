@@ -98,7 +98,18 @@
         </dependencies>
     </dependencyManagement>
 
+
+
     <dependencies>
+
+        <dependency>
+            <groupId>symmetry</groupId>
+            <artifactId>taxengine</artifactId>
+            <version>1.0</version>
+            <systemPath>${project.basedir}/libs/symmetry/taxengine/1.0/taxengine-1.0.jar</systemPath>
+            <scope>system</scope>
+        </dependency>
+
         <dependency>
             <groupId>io.github.jhipster</groupId>
             <artifactId>jhipster</artifactId>
