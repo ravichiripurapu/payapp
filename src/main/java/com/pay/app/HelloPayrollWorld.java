@@ -9,10 +9,12 @@ import java.util.Date;
  */
 public class HelloPayrollWorld {
     STEPayrollCalculator STE;
+
+    /**
     public static void main(String[] args) {
         HelloPayrollWorld client = new HelloPayrollWorld();
         client.hello();
-    }
+    }**/
 
     public HelloPayrollWorld(){
     }
