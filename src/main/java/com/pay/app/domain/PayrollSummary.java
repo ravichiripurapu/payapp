@@ -21,28 +21,28 @@ public class PayrollSummary implements Serializable {
     private Long id;
 
     @Column(name = "direct_deposit_amount")
-    private Float directDepositAmount;
+    private Double directDepositAmount;
 
     @Column(name = "paid_by_check_amount")
-    private Float paidByCheckAmount;
+    private Double paidByCheckAmount;
 
     @Column(name = "employee_deductions")
-    private Float employeeDeductions;
+    private Double employeeDeductions;
 
     @Column(name = "employer_deductions")
-    private Float employerDeductions;
+    private Double employerDeductions;
 
     @Column(name = "employee_taxes")
-    private Float employeeTaxes;
+    private Double employeeTaxes;
 
     @Column(name = "employer_taxes")
-    private Float employerTaxes;
+    private Double employerTaxes;
 
     @Column(name = "payroll_processing_fee")
-    private Float payrollProcessingFee;
+    private Double payrollProcessingFee;
 
     @Column(name = "total_cash_requirements")
-    private Float totalCashRequirements;
+    private Double totalCashRequirements;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -62,107 +62,107 @@ public class PayrollSummary implements Serializable {
         this.id = id;
     }
 
-    public Float getDirectDepositAmount() {
+    public Double getDirectDepositAmount() {
         return directDepositAmount;
     }
 
-    public PayrollSummary directDepositAmount(Float directDepositAmount) {
+    public PayrollSummary directDepositAmount(Double directDepositAmount) {
         this.directDepositAmount = directDepositAmount;
         return this;
     }
 
-    public void setDirectDepositAmount(Float directDepositAmount) {
+    public void setDirectDepositAmount(Double directDepositAmount) {
         this.directDepositAmount = directDepositAmount;
     }
 
-    public Float getPaidByCheckAmount() {
+    public Double getPaidByCheckAmount() {
         return paidByCheckAmount;
     }
 
-    public PayrollSummary paidByCheckAmount(Float paidByCheckAmount) {
+    public PayrollSummary paidByCheckAmount(Double paidByCheckAmount) {
         this.paidByCheckAmount = paidByCheckAmount;
         return this;
     }
 
-    public void setPaidByCheckAmount(Float paidByCheckAmount) {
+    public void setPaidByCheckAmount(Double paidByCheckAmount) {
         this.paidByCheckAmount = paidByCheckAmount;
     }
 
-    public Float getEmployeeDeductions() {
+    public Double getEmployeeDeductions() {
         return employeeDeductions;
     }
 
-    public PayrollSummary employeeDeductions(Float employeeDeductions) {
+    public PayrollSummary employeeDeductions(Double employeeDeductions) {
         this.employeeDeductions = employeeDeductions;
         return this;
     }
 
-    public void setEmployeeDeductions(Float employeeDeductions) {
+    public void setEmployeeDeductions(Double employeeDeductions) {
         this.employeeDeductions = employeeDeductions;
     }
 
-    public Float getEmployerDeductions() {
+    public Double getEmployerDeductions() {
         return employerDeductions;
     }
 
-    public PayrollSummary employerDeductions(Float employerDeductions) {
+    public PayrollSummary employerDeductions(Double employerDeductions) {
         this.employerDeductions = employerDeductions;
         return this;
     }
 
-    public void setEmployerDeductions(Float employerDeductions) {
+    public void setEmployerDeductions(Double employerDeductions) {
         this.employerDeductions = employerDeductions;
     }
 
-    public Float getEmployeeTaxes() {
+    public Double getEmployeeTaxes() {
         return employeeTaxes;
     }
 
-    public PayrollSummary employeeTaxes(Float employeeTaxes) {
+    public PayrollSummary employeeTaxes(Double employeeTaxes) {
         this.employeeTaxes = employeeTaxes;
         return this;
     }
 
-    public void setEmployeeTaxes(Float employeeTaxes) {
+    public void setEmployeeTaxes(Double employeeTaxes) {
         this.employeeTaxes = employeeTaxes;
     }
 
-    public Float getEmployerTaxes() {
+    public Double getEmployerTaxes() {
         return employerTaxes;
     }
 
-    public PayrollSummary employerTaxes(Float employerTaxes) {
+    public PayrollSummary employerTaxes(Double employerTaxes) {
         this.employerTaxes = employerTaxes;
         return this;
     }
 
-    public void setEmployerTaxes(Float employerTaxes) {
+    public void setEmployerTaxes(Double employerTaxes) {
         this.employerTaxes = employerTaxes;
     }
 
-    public Float getPayrollProcessingFee() {
+    public Double getPayrollProcessingFee() {
         return payrollProcessingFee;
     }
 
-    public PayrollSummary payrollProcessingFee(Float payrollProcessingFee) {
+    public PayrollSummary payrollProcessingFee(Double payrollProcessingFee) {
         this.payrollProcessingFee = payrollProcessingFee;
         return this;
     }
 
-    public void setPayrollProcessingFee(Float payrollProcessingFee) {
+    public void setPayrollProcessingFee(Double payrollProcessingFee) {
         this.payrollProcessingFee = payrollProcessingFee;
     }
 
-    public Float getTotalCashRequirements() {
+    public Double getTotalCashRequirements() {
         return totalCashRequirements;
     }
 
-    public PayrollSummary totalCashRequirements(Float totalCashRequirements) {
+    public PayrollSummary totalCashRequirements(Double totalCashRequirements) {
         this.totalCashRequirements = totalCashRequirements;
         return this;
     }
 
-    public void setTotalCashRequirements(Float totalCashRequirements) {
+    public void setTotalCashRequirements(Double totalCashRequirements) {
         this.totalCashRequirements = totalCashRequirements;
     }
 

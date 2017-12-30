@@ -3,9 +3,11 @@ package com.pay.app.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.pay.app.domain.PayrollEarnings;
 
+import com.pay.app.domain.PayrollSummary;
 import com.pay.app.repository.PayrollEarningsRepository;
 import com.pay.app.web.rest.errors.BadRequestAlertException;
 import com.pay.app.web.rest.util.HeaderUtil;
+import com.symmetry.ste.*;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +31,7 @@ public class PayrollEarningsResource {
 
     private final Logger log = LoggerFactory.getLogger(PayrollEarningsResource.class);
 
-    private static final String ENTITY_NAME = "payrollEarnings";
+    private static final String ENTITY_NAME = "payrollSummary";
 
     private final PayrollEarningsRepository payrollEarningsRepository;
 
@@ -42,78 +46,117 @@ public class PayrollEarningsResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new payrollEarnings, or with status 400 (Bad Request) if the payrollEarnings has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/payroll-earnings")
+    @PostMapping("/run-payroll")
     @Timed
-    public ResponseEntity<PayrollEarnings> createPayrollEarnings(@RequestBody PayrollEarnings payrollEarnings) throws URISyntaxException {
+    public ResponseEntity<PayrollSummary> createPayrollEarnings(@RequestBody List<PayrollEarnings> payrollEarnings) throws URISyntaxException {
         log.debug("REST request to save PayrollEarnings : {}", payrollEarnings);
-        if (payrollEarnings.getId() != null) {
-            throw new BadRequestAlertException("A new payrollEarnings cannot already have an ID", ENTITY_NAME, "idexists");
+
+        String STEhome =  "/opt/ste/ste-root";
+
+        String jniHome = "/opt/ste/ste-interface-files/java";
+
+        String FEDERAL_LOCATION_CODE = "00-000-0000";
+        try
+        {
+            STEPayrollCalculator STE = new STEPayrollCalculator(jniHome, STEhome);
+            Date today = new Date();
+            STE.setPayrollRunParameters(today, 52, 13);
+            STE.clearPayrollCalculations();
+
+            // Federal Code with Annualized Calcuations (Regular Pay) -- Pay Check Amount
+            // In case of supplemental like (Bonus or Overtime or Commission) --- Supplemental and
+            // the second calc method should be flat.
+            STE.setCalculationMethod(FEDERAL_LOCATION_CODE, CalcMethod.ANNUALIZED,CalcMethod.NONE);
+            Money zero = Money.zero();
+
+            // put employee wages
+            // zeros are the following order : month to date, quarter to date, year to date
+            // In general put the year to date values only.
+            // month to date is not needed
+            // quarter to date is not needed
+            STE.setWages(FEDERAL_LOCATION_CODE, WageType.REGULAR, new Hours(40.00),
+                new Money(5000.00), zero, zero, zero);
+
+            // Set W4 Information
+            // three zeros : additional with holding, year_to_date, most recent with holding
+            STE.setFederalParameters(false, FederalFilingStatus.MARRIED, 2, true, zero,
+                zero, zero);
+
+            // Set FICA Params here
+            STE.setFICAParameters(false,false, zero, zero, true);
+
+            // Set Medicare
+            STE.setMedicareParameters(false, zero, zero);
+
+            // Verify if the we need to set EIC.
+            STE.setEICParameters(EarnedIncomeCredit.SINGLE, zero, false);
+            // The code for Indianapolis, Indiana (Marion County) is "18-097-452890"
+            // The state GNIS code is 18
+            // The county GNIS code is 097
+            // The City GNIS code is 452890
+
+            // State Params (State Location code : 18 is state, 097 is county, 452890 is local"
+            // state default rounding
+            // three zeros : additional with holding, year_to_date, most recent with holding
+            STE.setStateParameters("18-097-452890", true, false,
+                StateRounding.DEFAULTROUNDING, zero, zero, zero, false);
+
+            // State calculation method.
+            STE.setCalculationMethod("18-097-452890", CalcMethod.ANNUALIZED, CalcMethod.NONE);
+
+            // State Wages
+            // put employee wages
+            // zeros are the following order : month to date, quarter to date, year to date
+            // In general put the year to date values only.
+            // month to date is not needed
+            // quarter to date is not needed
+            STE.setWages("18-097-452890", WageType.REGULAR, new Hours(40.00), new Money(5000.00),
+                zero, zero, zero);
+
+            // Set County Parameters
+            STE.setCountyParameters("18-097-452890", false, true);
+            // The miscellaneous parameters vary by state
+            // Indiana requires the following two parameters to withhold state tax
+
+            // Each State might require misc params.
+            STE.setStateMiscellaneousParameters("18-097-452890", "PERSONALEXEMPTIONS", "1");
+            STE.setStateMiscellaneousParameters("18-097-452890", "DEPENDENTEXEMPTIONS", "2");
+
+            // Call the calc Taxes
+            STE.calculateTaxes();
+
+
+            String version = STE.getSTEVersion();
+            System.out.println("STE Version: " + version);
+            System.out.println("FICA Withholding: " + STE.getFICACalc());
+            System.out.println("Medicare Withholding: " + STE.getMedicareCalc());
+            System.out.println("Federal Withholding: " + STE.getFederalCalc());
+            System.out.println("Earned Inc. Credit: " + STE.getEICCalc());
+            System.out.println("State Withholding: " + STE.getStateCalc("18-097-452890"));
+            System.out.println("County Withholding: " + STE.getCountyCalc("18-097-452890"));
+
+            PayrollSummary payrollSummary = new PayrollSummary()
+                .companyCode("test")
+                .createdDate (LocalDate.now())
+                .createdBy("System")
+                .employeeDeductions(new Double(STE.getFederalCalc().doubleValue()))
+                .payrollProcessingFee(new Double(35))
+                .directDepositAmount(new Double(2000));
+
+            return ResponseEntity.created(new URI("/api/payroll-earnings/" + payrollSummary.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, payrollSummary.getId().toString()))
+                .body(payrollSummary);
         }
-        PayrollEarnings result = payrollEarningsRepository.save(payrollEarnings);
-        return ResponseEntity.created(new URI("/api/payroll-earnings/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
-    }
-
-    /**
-     * PUT  /payroll-earnings : Updates an existing payrollEarnings.
-     *
-     * @param payrollEarnings the payrollEarnings to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated payrollEarnings,
-     * or with status 400 (Bad Request) if the payrollEarnings is not valid,
-     * or with status 500 (Internal Server Error) if the payrollEarnings couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/payroll-earnings")
-    @Timed
-    public ResponseEntity<PayrollEarnings> updatePayrollEarnings(@RequestBody PayrollEarnings payrollEarnings) throws URISyntaxException {
-        log.debug("REST request to update PayrollEarnings : {}", payrollEarnings);
-        if (payrollEarnings.getId() == null) {
-            return createPayrollEarnings(payrollEarnings);
-        }
-        PayrollEarnings result = payrollEarningsRepository.save(payrollEarnings);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, payrollEarnings.getId().toString()))
-            .body(result);
-    }
-
-    /**
-     * GET  /payroll-earnings : get all the payrollEarnings.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of payrollEarnings in body
-     */
-    @GetMapping("/payroll-earnings")
-    @Timed
-    public List<PayrollEarnings> getAllPayrollEarnings() {
-        log.debug("REST request to get all PayrollEarnings");
-        return payrollEarningsRepository.findAll();
+        catch( Exception e )
+        {
+            e.printStackTrace();
         }
 
-    /**
-     * GET  /payroll-earnings/:id : get the "id" payrollEarnings.
-     *
-     * @param id the id of the payrollEarnings to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the payrollEarnings, or with status 404 (Not Found)
-     */
-    @GetMapping("/payroll-earnings/{id}")
-    @Timed
-    public ResponseEntity<PayrollEarnings> getPayrollEarnings(@PathVariable Long id) {
-        log.debug("REST request to get PayrollEarnings : {}", id);
-        PayrollEarnings payrollEarnings = payrollEarningsRepository.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(payrollEarnings));
+        throw new BadRequestAlertException("Your payroll cannot be processed", "userManagement", "idexists");
+
+
+
     }
 
-    /**
-     * DELETE  /payroll-earnings/:id : delete the "id" payrollEarnings.
-     *
-     * @param id the id of the payrollEarnings to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @DeleteMapping("/payroll-earnings/{id}")
-    @Timed
-    public ResponseEntity<Void> deletePayrollEarnings(@PathVariable Long id) {
-        log.debug("REST request to delete PayrollEarnings : {}", id);
-        payrollEarningsRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
+
 }
