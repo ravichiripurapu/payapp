@@ -1,7 +1,6 @@
 package com.pay.app.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.pay.app.domain.EmployeeTaxDeduction;
 import com.pay.app.domain.EmployerTaxDeduction;
 import com.pay.app.repository.EmployerTaxDeductionRepository;
 import com.pay.app.web.rest.errors.BadRequestAlertException;
@@ -55,7 +54,7 @@ public class EmployerTaxDeductionResource {
     }
 
     /**
-     * PUT  /employee-tax-deduction : Updates an existing employeeTaxDeduction.
+     * PUT  /employer-tax-deduction : Updates an existing employeeTaxDeduction.
      *
      * @param employerTaxDeduction the employeeTaxDeduction to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated employeeTaxDeduction,
@@ -77,11 +76,11 @@ public class EmployerTaxDeductionResource {
     }
 
     /**
-     * GET  /employee-tax-deduction : get all the employeeFederalTaxes.
+     * GET  /employer-tax-deduction : get all the employeeFederalTaxes.
      *
      * @return the ResponseEntity with status 200 (OK) and the list of employeeFederalTaxes in body
      */
-    @GetMapping("/employee-tax-deduction")
+    @GetMapping("/employer-tax-deduction")
     @Timed
     public List<EmployerTaxDeduction> getAllEmployerFederalTaxes() {
         log.debug("REST request to get all EmployeeFederalTaxes");
@@ -89,12 +88,12 @@ public class EmployerTaxDeductionResource {
         }
 
     /**
-     * GET  /employee-tax-deduction/:id : get the "id" employeeFederalTax.
+     * GET  /employer-tax-deduction/:id : get the "id" employeeFederalTax.
      *
      * @param id the id of the employeeFederalTax to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the employeeFederalTax, or with status 404 (Not Found)
      */
-    @GetMapping("/employee-tax-deduction/{id}")
+    @GetMapping("/employer-tax-deduction/{id}")
     @Timed
     public ResponseEntity<EmployerTaxDeduction> getEmployeeFederalTax(@PathVariable Long id) {
         log.debug("REST request to get EmployeeTaxDeduction : {}", id);
@@ -103,12 +102,12 @@ public class EmployerTaxDeductionResource {
     }
 
     /**
-     * DELETE  /employee-tax-deduction/:id : delete the "id" employeeFederalTax.
+     * DELETE  /employer-tax-deduction/:id : delete the "id" employeeFederalTax.
      *
      * @param id the id of the employeeFederalTax to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/employee-tax-deduction/{id}")
+    @DeleteMapping("/employer-tax-deduction/{id}")
     @Timed
     public ResponseEntity<Void> deleteEmployeeFederalTax(@PathVariable Long id) {
         log.debug("REST request to delete EmployeeTaxDeduction : {}", id);

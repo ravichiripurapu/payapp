@@ -65,6 +65,11 @@ public class RunPayrollResource {
 
             for (EmployeePay employeePay : employeePayList) {
 
+                // String employee
+                String employee = employeePay.getEmployeeCode();
+
+                // String get
+
                 STE.clearPayrollCalculations();
 
                 // Federal Code with Annualized Calcuations (Regular Pay) -- Pay Check Amount

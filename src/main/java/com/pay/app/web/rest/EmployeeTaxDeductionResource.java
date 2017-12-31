@@ -2,7 +2,6 @@ package com.pay.app.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.pay.app.domain.EmployeeTaxDeduction;
-
 import com.pay.app.repository.EmployeeTaxDeductionRepository;
 import com.pay.app.web.rest.errors.BadRequestAlertException;
 import com.pay.app.web.rest.util.HeaderUtil;

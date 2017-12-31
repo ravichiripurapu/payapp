@@ -23,7 +23,7 @@ public class CompanyEarning implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "jhi_desc")
+    @Column(name = "desc")
     private String desc;
 
     @Column(name = "abbreviation")

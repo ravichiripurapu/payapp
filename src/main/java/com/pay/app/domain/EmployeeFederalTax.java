@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A EmployeeLocalTax.
+ * A EmployeeFederalTax.
  */
 @Entity
-@Table(name = "employee_local_tax")
-public class EmployeeLocalTax implements Serializable {
+@Table(name = "employee_federal_tax")
+public class EmployeeFederalTax implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,8 +20,8 @@ public class EmployeeLocalTax implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "filing_status")
-    private String filingStatus;
+    @Column(name = "filing_status_code")
+    private String filingStatusCode;
 
     @Column(name = "exempt_from_with_holding")
     private Boolean exemptFromWithHolding;
@@ -50,24 +50,24 @@ public class EmployeeLocalTax implements Serializable {
         this.id = id;
     }
 
-    public String getFilingStatus() {
-        return filingStatus;
+    public String getFilingStatusCode() {
+        return filingStatusCode;
     }
 
-    public EmployeeLocalTax filingStatus(String filingStatus) {
-        this.filingStatus = filingStatus;
+    public EmployeeFederalTax filingStatusCode(String filingStatusCode) {
+        this.filingStatusCode = filingStatusCode;
         return this;
     }
 
-    public void setFilingStatus(String filingStatus) {
-        this.filingStatus = filingStatus;
+    public void setFilingStatusCode(String filingStatusCode) {
+        this.filingStatusCode = filingStatusCode;
     }
 
     public Boolean isExemptFromWithHolding() {
         return exemptFromWithHolding;
     }
 
-    public EmployeeLocalTax exemptFromWithHolding(Boolean exemptFromWithHolding) {
+    public EmployeeFederalTax exemptFromWithHolding(Boolean exemptFromWithHolding) {
         this.exemptFromWithHolding = exemptFromWithHolding;
         return this;
     }
@@ -80,7 +80,7 @@ public class EmployeeLocalTax implements Serializable {
         return allowances;
     }
 
-    public EmployeeLocalTax allowances(Integer allowances) {
+    public EmployeeFederalTax allowances(Integer allowances) {
         this.allowances = allowances;
         return this;
     }
@@ -93,7 +93,7 @@ public class EmployeeLocalTax implements Serializable {
         return extraWithHolding;
     }
 
-    public EmployeeLocalTax extraWithHolding(Float extraWithHolding) {
+    public EmployeeFederalTax extraWithHolding(Float extraWithHolding) {
         this.extraWithHolding = extraWithHolding;
         return this;
     }
@@ -106,7 +106,7 @@ public class EmployeeLocalTax implements Serializable {
         return employeeCode;
     }
 
-    public EmployeeLocalTax employeeCode(String employeeCode) {
+    public EmployeeFederalTax employeeCode(String employeeCode) {
         this.employeeCode = employeeCode;
         return this;
     }
@@ -119,7 +119,7 @@ public class EmployeeLocalTax implements Serializable {
         return createdDate;
     }
 
-    public EmployeeLocalTax createdDate(LocalDate createdDate) {
+    public EmployeeFederalTax createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -132,7 +132,7 @@ public class EmployeeLocalTax implements Serializable {
         return createdBy;
     }
 
-    public EmployeeLocalTax createdBy(String createdBy) {
+    public EmployeeFederalTax createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -150,11 +150,11 @@ public class EmployeeLocalTax implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        EmployeeLocalTax employeeLocalTax = (EmployeeLocalTax) o;
-        if (employeeLocalTax.getId() == null || getId() == null) {
+        EmployeeFederalTax employeeFederalTax = (EmployeeFederalTax) o;
+        if (employeeFederalTax.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), employeeLocalTax.getId());
+        return Objects.equals(getId(), employeeFederalTax.getId());
     }
 
     @Override
@@ -164,9 +164,9 @@ public class EmployeeLocalTax implements Serializable {
 
     @Override
     public String toString() {
-        return "EmployeeLocalTax{" +
+        return "EmployeeFederalTax{" +
             "id=" + getId() +
-            ", filingStatus='" + getFilingStatus() + "'" +
+            ", filingStatusCode='" + getFilingStatusCode() + "'" +
             ", exemptFromWithHolding='" + isExemptFromWithHolding() + "'" +
             ", allowances=" + getAllowances() +
             ", extraWithHolding=" + getExtraWithHolding() +

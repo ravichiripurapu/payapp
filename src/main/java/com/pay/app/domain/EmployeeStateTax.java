@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A EmployeeLocalTax.
+ * A EmployeeStateTax.
  */
 @Entity
-@Table(name = "employee_local_tax")
-public class EmployeeLocalTax implements Serializable {
+@Table(name = "employee_state_tax")
+public class EmployeeStateTax implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,11 +20,23 @@ public class EmployeeLocalTax implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "state")
+    private String state;
+
     @Column(name = "filing_status")
     private String filingStatus;
 
     @Column(name = "exempt_from_with_holding")
     private Boolean exemptFromWithHolding;
+
+    @Column(name = "exempt_from_sui")
+    private Boolean exemptFromSUI;
+
+    @Column(name = "exempt_from_futa")
+    private Boolean exemptFromFUTA;
+
+    @Column(name = "futa_exempt_reason")
+    private String futaExemptReason;
 
     @Column(name = "allowances")
     private Integer allowances;
@@ -50,11 +62,24 @@ public class EmployeeLocalTax implements Serializable {
         this.id = id;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public EmployeeStateTax state(String state) {
+        this.state = state;
+        return this;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public String getFilingStatus() {
         return filingStatus;
     }
 
-    public EmployeeLocalTax filingStatus(String filingStatus) {
+    public EmployeeStateTax filingStatus(String filingStatus) {
         this.filingStatus = filingStatus;
         return this;
     }
@@ -67,7 +92,7 @@ public class EmployeeLocalTax implements Serializable {
         return exemptFromWithHolding;
     }
 
-    public EmployeeLocalTax exemptFromWithHolding(Boolean exemptFromWithHolding) {
+    public EmployeeStateTax exemptFromWithHolding(Boolean exemptFromWithHolding) {
         this.exemptFromWithHolding = exemptFromWithHolding;
         return this;
     }
@@ -76,11 +101,50 @@ public class EmployeeLocalTax implements Serializable {
         this.exemptFromWithHolding = exemptFromWithHolding;
     }
 
+    public Boolean isExemptFromSUI() {
+        return exemptFromSUI;
+    }
+
+    public EmployeeStateTax exemptFromSUI(Boolean exemptFromSUI) {
+        this.exemptFromSUI = exemptFromSUI;
+        return this;
+    }
+
+    public void setExemptFromSUI(Boolean exemptFromSUI) {
+        this.exemptFromSUI = exemptFromSUI;
+    }
+
+    public Boolean isExemptFromFUTA() {
+        return exemptFromFUTA;
+    }
+
+    public EmployeeStateTax exemptFromFUTA(Boolean exemptFromFUTA) {
+        this.exemptFromFUTA = exemptFromFUTA;
+        return this;
+    }
+
+    public void setExemptFromFUTA(Boolean exemptFromFUTA) {
+        this.exemptFromFUTA = exemptFromFUTA;
+    }
+
+    public String getFutaExemptReason() {
+        return futaExemptReason;
+    }
+
+    public EmployeeStateTax futaExemptReason(String futaExemptReason) {
+        this.futaExemptReason = futaExemptReason;
+        return this;
+    }
+
+    public void setFutaExemptReason(String futaExemptReason) {
+        this.futaExemptReason = futaExemptReason;
+    }
+
     public Integer getAllowances() {
         return allowances;
     }
 
-    public EmployeeLocalTax allowances(Integer allowances) {
+    public EmployeeStateTax allowances(Integer allowances) {
         this.allowances = allowances;
         return this;
     }
@@ -93,7 +157,7 @@ public class EmployeeLocalTax implements Serializable {
         return extraWithHolding;
     }
 
-    public EmployeeLocalTax extraWithHolding(Float extraWithHolding) {
+    public EmployeeStateTax extraWithHolding(Float extraWithHolding) {
         this.extraWithHolding = extraWithHolding;
         return this;
     }
@@ -106,7 +170,7 @@ public class EmployeeLocalTax implements Serializable {
         return employeeCode;
     }
 
-    public EmployeeLocalTax employeeCode(String employeeCode) {
+    public EmployeeStateTax employeeCode(String employeeCode) {
         this.employeeCode = employeeCode;
         return this;
     }
@@ -119,7 +183,7 @@ public class EmployeeLocalTax implements Serializable {
         return createdDate;
     }
 
-    public EmployeeLocalTax createdDate(LocalDate createdDate) {
+    public EmployeeStateTax createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -132,7 +196,7 @@ public class EmployeeLocalTax implements Serializable {
         return createdBy;
     }
 
-    public EmployeeLocalTax createdBy(String createdBy) {
+    public EmployeeStateTax createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -150,11 +214,11 @@ public class EmployeeLocalTax implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        EmployeeLocalTax employeeLocalTax = (EmployeeLocalTax) o;
-        if (employeeLocalTax.getId() == null || getId() == null) {
+        EmployeeStateTax employeeStateTax = (EmployeeStateTax) o;
+        if (employeeStateTax.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), employeeLocalTax.getId());
+        return Objects.equals(getId(), employeeStateTax.getId());
     }
 
     @Override
@@ -164,10 +228,14 @@ public class EmployeeLocalTax implements Serializable {
 
     @Override
     public String toString() {
-        return "EmployeeLocalTax{" +
+        return "EmployeeStateTax{" +
             "id=" + getId() +
+            ", state='" + getState() + "'" +
             ", filingStatus='" + getFilingStatus() + "'" +
             ", exemptFromWithHolding='" + isExemptFromWithHolding() + "'" +
+            ", exemptFromSUI='" + isExemptFromSUI() + "'" +
+            ", exemptFromFUTA='" + isExemptFromFUTA() + "'" +
+            ", futaExemptReason='" + getFutaExemptReason() + "'" +
             ", allowances=" + getAllowances() +
             ", extraWithHolding=" + getExtraWithHolding() +
             ", employeeCode='" + getEmployeeCode() + "'" +
