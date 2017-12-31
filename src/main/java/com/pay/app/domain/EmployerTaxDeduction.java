@@ -2,17 +2,16 @@ package com.pay.app.domain;
 
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A PayrollEmployerTaxes.
+ * A EmployeeTaxDeduction.
  */
 @Entity
-@Table(name = "payroll_employer_taxes")
-public class PayrollEmployerTaxes implements Serializable {
+@Table(name = "employee_tax_deduction")
+public class EmployerTaxDeduction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,17 +19,15 @@ public class PayrollEmployerTaxes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tax_code")
-    private String taxCode;
+    private TaxCode taxCode;
 
-    @Column(name = "period_amount")
-    private Float periodAmount;
+    @Column(name = "tax_name")
+    private String taxName;
 
-    @Column(name = "ytd_amount")
-    private Float ytdAmount;
-
-    @Column(name = "company_code")
-    private String companyCode;
+    @Column(name = "with_holding_amount")
+    private Double withHoldingAmount;
 
     @Column(name = "employee_code")
     private String employeeCode;
@@ -50,63 +47,35 @@ public class PayrollEmployerTaxes implements Serializable {
         this.id = id;
     }
 
-    public String getTaxCode() {
+    public TaxCode getTaxCode() {
         return taxCode;
     }
 
-    public PayrollEmployerTaxes taxCode(String taxCode) {
-        this.taxCode = taxCode;
-        return this;
-    }
-
-    public void setTaxCode(String taxCode) {
+    public void setTaxCode(TaxCode taxCode) {
         this.taxCode = taxCode;
     }
 
-    public Float getPeriodAmount() {
-        return periodAmount;
+    public String getTaxName() {
+        return taxName;
     }
 
-    public PayrollEmployerTaxes periodAmount(Float periodAmount) {
-        this.periodAmount = periodAmount;
-        return this;
+    public void setTaxName(String taxName) {
+        this.taxName = taxName;
     }
 
-    public void setPeriodAmount(Float periodAmount) {
-        this.periodAmount = periodAmount;
+    public Double getWithHoldingAmount() {
+        return withHoldingAmount;
     }
 
-    public Float getYtdAmount() {
-        return ytdAmount;
-    }
-
-    public PayrollEmployerTaxes ytdAmount(Float ytdAmount) {
-        this.ytdAmount = ytdAmount;
-        return this;
-    }
-
-    public void setYtdAmount(Float ytdAmount) {
-        this.ytdAmount = ytdAmount;
-    }
-
-    public String getCompanyCode() {
-        return companyCode;
-    }
-
-    public PayrollEmployerTaxes companyCode(String companyCode) {
-        this.companyCode = companyCode;
-        return this;
-    }
-
-    public void setCompanyCode(String companyCode) {
-        this.companyCode = companyCode;
+    public void setWithHoldingAmount(Double withHoldingAmount) {
+        this.withHoldingAmount = withHoldingAmount;
     }
 
     public String getEmployeeCode() {
         return employeeCode;
     }
 
-    public PayrollEmployerTaxes employeeCode(String employeeCode) {
+    public EmployerTaxDeduction employeeCode(String employeeCode) {
         this.employeeCode = employeeCode;
         return this;
     }
@@ -119,7 +88,7 @@ public class PayrollEmployerTaxes implements Serializable {
         return createdDate;
     }
 
-    public PayrollEmployerTaxes createdDate(LocalDate createdDate) {
+    public EmployerTaxDeduction createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -132,7 +101,7 @@ public class PayrollEmployerTaxes implements Serializable {
         return createdBy;
     }
 
-    public PayrollEmployerTaxes createdBy(String createdBy) {
+    public EmployerTaxDeduction createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -150,11 +119,11 @@ public class PayrollEmployerTaxes implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PayrollEmployerTaxes payrollEmployerTaxes = (PayrollEmployerTaxes) o;
-        if (payrollEmployerTaxes.getId() == null || getId() == null) {
+        EmployerTaxDeduction employeeTaxDeduction = (EmployerTaxDeduction) o;
+        if (employeeTaxDeduction.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), payrollEmployerTaxes.getId());
+        return Objects.equals(getId(), employeeTaxDeduction.getId());
     }
 
     @Override
@@ -164,12 +133,8 @@ public class PayrollEmployerTaxes implements Serializable {
 
     @Override
     public String toString() {
-        return "PayrollEmployerTaxes{" +
+        return "EmployeeTaxDeduction{" +
             "id=" + getId() +
-            ", taxCode='" + getTaxCode() + "'" +
-            ", periodAmount=" + getPeriodAmount() +
-            ", ytdAmount=" + getYtdAmount() +
-            ", companyCode='" + getCompanyCode() + "'" +
             ", employeeCode='" + getEmployeeCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
