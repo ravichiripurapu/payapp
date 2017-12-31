@@ -20,6 +20,9 @@ public class PayrollSchedule implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "check_date")
     private LocalDate checkDate;
 
@@ -75,6 +78,19 @@ public class PayrollSchedule implements Serializable {
 
     public PayrollSchedule periodEnd(LocalDate periodEnd) {
         this.periodEnd = periodEnd;
+        return this;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public PayrollSchedule code(String code) {
+        this.code = code;
         return this;
     }
 

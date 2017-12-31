@@ -40,29 +40,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = PayappApp.class)
 public class PayrollSummaryResourceIntTest {
 
-    private static final Float DEFAULT_DIRECT_DEPOSIT_AMOUNT = 1F;
-    private static final Float UPDATED_DIRECT_DEPOSIT_AMOUNT = 2F;
+    private static final Double DEFAULT_DIRECT_DEPOSIT_AMOUNT = 1D;
+    private static final Double UPDATED_DIRECT_DEPOSIT_AMOUNT = 2D;
 
-    private static final Float DEFAULT_PAID_BY_CHECK_AMOUNT = 1F;
-    private static final Float UPDATED_PAID_BY_CHECK_AMOUNT = 2F;
+    private static final Double DEFAULT_PAID_BY_CHECK_AMOUNT = 1D;
+    private static final Double UPDATED_PAID_BY_CHECK_AMOUNT = 2D;
 
-    private static final Float DEFAULT_EMPLOYEE_DEDUCTIONS = 1F;
-    private static final Float UPDATED_EMPLOYEE_DEDUCTIONS = 2F;
+    private static final Double DEFAULT_EMPLOYEE_DEDUCTIONS = 1D;
+    private static final Double UPDATED_EMPLOYEE_DEDUCTIONS = 2D;
 
-    private static final Float DEFAULT_EMPLOYER_DEDUCTIONS = 1F;
-    private static final Float UPDATED_EMPLOYER_DEDUCTIONS = 2F;
+    private static final Double DEFAULT_EMPLOYER_DEDUCTIONS = 1D;
+    private static final Double UPDATED_EMPLOYER_DEDUCTIONS = 2D;
 
-    private static final Float DEFAULT_EMPLOYEE_TAXES = 1F;
-    private static final Float UPDATED_EMPLOYEE_TAXES = 2F;
+    private static final Double DEFAULT_EMPLOYEE_TAXES = 1D;
+    private static final Double UPDATED_EMPLOYEE_TAXES = 2D;
 
-    private static final Float DEFAULT_EMPLOYER_TAXES = 1F;
-    private static final Float UPDATED_EMPLOYER_TAXES = 2F;
+    private static final Double DEFAULT_EMPLOYER_TAXES = 1D;
+    private static final Double UPDATED_EMPLOYER_TAXES = 2D;
 
-    private static final Float DEFAULT_PAYROLL_PROCESSING_FEE = 1F;
-    private static final Float UPDATED_PAYROLL_PROCESSING_FEE = 2F;
+    private static final Double DEFAULT_PAYROLL_PROCESSING_FEE = 1D;
+    private static final Double UPDATED_PAYROLL_PROCESSING_FEE = 2D;
 
-    private static final Float DEFAULT_TOTAL_CASH_REQUIREMENTS = 1F;
-    private static final Float UPDATED_TOTAL_CASH_REQUIREMENTS = 2F;
+    private static final Double DEFAULT_TOTAL_CASH_REQUIREMENTS = 1D;
+    private static final Double UPDATED_TOTAL_CASH_REQUIREMENTS = 2D;
 
     private static final String DEFAULT_COMPANY_CODE = "AAAAAAAAAA";
     private static final String UPDATED_COMPANY_CODE = "BBBBBBBBBB";
