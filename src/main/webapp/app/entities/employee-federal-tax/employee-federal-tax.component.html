@@ -28,25 +28,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let employeeFederalTax of employeeFederalTaxes ;trackBy: trackId">
-                <td><a [routerLink]="['../employee-federal-tax', employeeFederalTax.id ]">{{employeeFederalTax.id}}</a></td>
-                <td>{{employeeFederalTax.filingStatusCode}}</td>
-                <td>{{employeeFederalTax.exemptFromWithHolding}}</td>
-                <td>{{employeeFederalTax.allowances}}</td>
-                <td>{{employeeFederalTax.extraWithHolding}}</td>
-                <td>{{employeeFederalTax.employeeCode}}</td>
-                <td>{{employeeFederalTax.createdDate | date:'mediumDate'}}</td>
-                <td>{{employeeFederalTax.createdBy}}</td>
+            <tr *ngFor="let employeeTaxDeduction of employeeFederalTaxes ;trackBy: trackId">
+                <td><a [routerLink]="['../employee-federal-tax', employeeTaxDeduction.id ]">{{employeeTaxDeduction.id}}</a></td>
+                <td>{{employeeTaxDeduction.filingStatusCode}}</td>
+                <td>{{employeeTaxDeduction.exemptFromWithHolding}}</td>
+                <td>{{employeeTaxDeduction.allowances}}</td>
+                <td>{{employeeTaxDeduction.extraWithHolding}}</td>
+                <td>{{employeeTaxDeduction.employeeCode}}</td>
+                <td>{{employeeTaxDeduction.createdDate | date:'mediumDate'}}</td>
+                <td>{{employeeTaxDeduction.createdBy}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../employee-federal-tax', employeeFederalTax.id ]"
+                                [routerLink]="['../employee-federal-tax', employeeTaxDeduction.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'employee-federal-tax/'+ employeeFederalTax.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'employee-federal-tax/'+ employeeTaxDeduction.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -54,7 +54,7 @@
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'employee-federal-tax/'+ employeeFederalTax.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'employee-federal-tax/'+ employeeTaxDeduction.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

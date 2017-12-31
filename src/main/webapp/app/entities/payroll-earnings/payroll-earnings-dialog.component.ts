@@ -16,7 +16,7 @@ import { PayrollEarningsService } from './payroll-earnings.service';
 })
 export class PayrollEarningsDialogComponent implements OnInit {
 
-    payrollEarnings: PayrollEarnings;
+    employeePayEarning: PayrollEarnings;
     isSaving: boolean;
     createdDateDp: any;
 
@@ -37,12 +37,12 @@ export class PayrollEarningsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.payrollEarnings.id !== undefined) {
+        if (this.employeePayEarning.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.payrollEarningsService.update(this.payrollEarnings));
+                this.payrollEarningsService.update(this.employeePayEarning));
         } else {
             this.subscribeToSaveResponse(
-                this.payrollEarningsService.create(this.payrollEarnings));
+                this.payrollEarningsService.create(this.employeePayEarning));
         }
     }
 

@@ -11,7 +11,7 @@ import { Principal, ResponseWrapper } from '../../shared';
     templateUrl: './payroll-earnings.component.html'
 })
 export class PayrollEarningsComponent implements OnInit, OnDestroy {
-payrollEarnings: PayrollEarnings[];
+employeePayEarning: PayrollEarnings[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
@@ -26,7 +26,7 @@ payrollEarnings: PayrollEarnings[];
     loadAll() {
         this.payrollEarningsService.query().subscribe(
             (res: ResponseWrapper) => {
-                this.payrollEarnings = res.json;
+                this.employeePayEarning = res.json;
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );

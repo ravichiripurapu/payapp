@@ -15,16 +15,16 @@ export class EmployeeFederalTaxService {
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(employeeFederalTax: EmployeeFederalTax): Observable<EmployeeFederalTax> {
-        const copy = this.convert(employeeFederalTax);
+    create(employeeTaxDeduction: EmployeeFederalTax): Observable<EmployeeFederalTax> {
+        const copy = this.convert(employeeTaxDeduction);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(employeeFederalTax: EmployeeFederalTax): Observable<EmployeeFederalTax> {
-        const copy = this.convert(employeeFederalTax);
+    update(employeeTaxDeduction: EmployeeFederalTax): Observable<EmployeeFederalTax> {
+        const copy = this.convert(employeeTaxDeduction);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -70,10 +70,10 @@ export class EmployeeFederalTaxService {
     /**
      * Convert a EmployeeFederalTax to a JSON which can be sent to the server.
      */
-    private convert(employeeFederalTax: EmployeeFederalTax): EmployeeFederalTax {
-        const copy: EmployeeFederalTax = Object.assign({}, employeeFederalTax);
+    private convert(employeeTaxDeduction: EmployeeFederalTax): EmployeeFederalTax {
+        const copy: EmployeeFederalTax = Object.assign({}, employeeTaxDeduction);
         copy.createdDate = this.dateUtils
-            .convertLocalDateToServer(employeeFederalTax.createdDate);
+            .convertLocalDateToServer(employeeTaxDeduction.createdDate);
         return copy;
     }
 }

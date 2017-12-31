@@ -60,12 +60,12 @@ class PayrollEarningsGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all payrollEarnings")
+            exec(http("Get all employeePayEarning")
             .get("/api/payroll-earnings")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new payrollEarnings")
+            .exec(http("Create new employeePayEarning")
             .post("/api/payroll-earnings")
             .headers(headers_http_authenticated)
             .body(StringBody("""{"id":null, "earningsCode":"SAMPLE_TEXT", "hours":null, "periodAmount":null, "ytdAmount":null, "companyCode":"SAMPLE_TEXT", "employeeCode":"SAMPLE_TEXT", "createdDate":"2020-01-01T00:00:00.000Z", "createdBy":"SAMPLE_TEXT"}""")).asJSON
@@ -73,12 +73,12 @@ class PayrollEarningsGatlingTest extends Simulation {
             .check(headerRegex("Location", "(.*)").saveAs("new_payrollEarnings_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created payrollEarnings")
+                exec(http("Get created employeePayEarning")
                 .get("${new_payrollEarnings_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created payrollEarnings")
+            .exec(http("Delete created employeePayEarning")
             .delete("${new_payrollEarnings_url}")
             .headers(headers_http_authenticated))
             .pause(10)

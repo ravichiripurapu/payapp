@@ -2,8 +2,8 @@ package com.pay.app.web.rest;
 
 import com.pay.app.PayappApp;
 
-import com.pay.app.domain.CompanyStateTax;
-import com.pay.app.repository.CompanyStateTaxRepository;
+import com.pay.app.domain.CompanyTaxInfo;
+import com.pay.app.repository.CompanyTaxInfoRepository;
 import com.pay.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -32,13 +32,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Test class for the CompanyStateTaxResource REST controller.
+ * Test class for the CompanyTaxInfoResource REST controller.
  *
- * @see CompanyStateTaxResource
+ * @see CompanyTaxInfoResource
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PayappApp.class)
-public class CompanyStateTaxResourceIntTest {
+public class CompanyTaxInfoResourceIntTest {
 
     private static final String DEFAULT_STATE_CODE = "AAAAAAAAAA";
     private static final String UPDATED_STATE_CODE = "BBBBBBBBBB";
@@ -68,7 +68,7 @@ public class CompanyStateTaxResourceIntTest {
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
 
     @Autowired
-    private CompanyStateTaxRepository companyStateTaxRepository;
+    private CompanyTaxInfoRepository companyTaxInfoRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -82,15 +82,15 @@ public class CompanyStateTaxResourceIntTest {
     @Autowired
     private EntityManager em;
 
-    private MockMvc restCompanyStateTaxMockMvc;
+    private MockMvc restCompanyTaxInfoMockMvc;
 
-    private CompanyStateTax companyStateTax;
+    private CompanyTaxInfo companyTaxInfo;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CompanyStateTaxResource companyStateTaxResource = new CompanyStateTaxResource(companyStateTaxRepository);
-        this.restCompanyStateTaxMockMvc = MockMvcBuilders.standaloneSetup(companyStateTaxResource)
+        final CompanyTaxInfoResource companyTaxInfoResource = new CompanyTaxInfoResource(companyTaxInfoRepository);
+        this.restCompanyTaxInfoMockMvc = MockMvcBuilders.standaloneSetup(companyTaxInfoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())
@@ -103,8 +103,8 @@ public class CompanyStateTaxResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CompanyStateTax createEntity(EntityManager em) {
-        CompanyStateTax companyStateTax = new CompanyStateTax()
+    public static CompanyTaxInfo createEntity(EntityManager em) {
+        CompanyTaxInfo companyTaxInfo = new CompanyTaxInfo()
             .stateCode(DEFAULT_STATE_CODE)
             .taxId(DEFAULT_TAX_ID)
             .rate(DEFAULT_RATE)
@@ -114,70 +114,70 @@ public class CompanyStateTaxResourceIntTest {
             .companyCode(DEFAULT_COMPANY_CODE)
             .createdDate(DEFAULT_CREATED_DATE)
             .createdBy(DEFAULT_CREATED_BY);
-        return companyStateTax;
+        return companyTaxInfo;
     }
 
     @Before
     public void initTest() {
-        companyStateTax = createEntity(em);
+        companyTaxInfo = createEntity(em);
     }
 
     @Test
     @Transactional
-    public void createCompanyStateTax() throws Exception {
-        int databaseSizeBeforeCreate = companyStateTaxRepository.findAll().size();
+    public void createCompanyTaxInfo() throws Exception {
+        int databaseSizeBeforeCreate = companyTaxInfoRepository.findAll().size();
 
-        // Create the CompanyStateTax
-        restCompanyStateTaxMockMvc.perform(post("/api/company-state-taxes")
+        // Create the CompanyTaxInfo
+        restCompanyTaxInfoMockMvc.perform(post("/api/company-tax-info")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(companyStateTax)))
+            .content(TestUtil.convertObjectToJsonBytes(companyTaxInfo)))
             .andExpect(status().isCreated());
 
-        // Validate the CompanyStateTax in the database
-        List<CompanyStateTax> companyStateTaxList = companyStateTaxRepository.findAll();
-        assertThat(companyStateTaxList).hasSize(databaseSizeBeforeCreate + 1);
-        CompanyStateTax testCompanyStateTax = companyStateTaxList.get(companyStateTaxList.size() - 1);
-        assertThat(testCompanyStateTax.getStateCode()).isEqualTo(DEFAULT_STATE_CODE);
-        assertThat(testCompanyStateTax.getTaxId()).isEqualTo(DEFAULT_TAX_ID);
-        assertThat(testCompanyStateTax.getRate()).isEqualTo(DEFAULT_RATE);
-        assertThat(testCompanyStateTax.getEffectiveDate()).isEqualTo(DEFAULT_EFFECTIVE_DATE);
-        assertThat(testCompanyStateTax.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testCompanyStateTax.getDepositFrequency()).isEqualTo(DEFAULT_DEPOSIT_FREQUENCY);
-        assertThat(testCompanyStateTax.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
-        assertThat(testCompanyStateTax.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
-        assertThat(testCompanyStateTax.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
+        // Validate the CompanyTaxInfo in the database
+        List<CompanyTaxInfo> companyTaxInfoList = companyTaxInfoRepository.findAll();
+        assertThat(companyTaxInfoList).hasSize(databaseSizeBeforeCreate + 1);
+        CompanyTaxInfo testCompanyTaxInfo = companyTaxInfoList.get(companyTaxInfoList.size() - 1);
+        assertThat(testCompanyTaxInfo.getStateCode()).isEqualTo(DEFAULT_STATE_CODE);
+        assertThat(testCompanyTaxInfo.getTaxId()).isEqualTo(DEFAULT_TAX_ID);
+        assertThat(testCompanyTaxInfo.getRate()).isEqualTo(DEFAULT_RATE);
+        assertThat(testCompanyTaxInfo.getEffectiveDate()).isEqualTo(DEFAULT_EFFECTIVE_DATE);
+        assertThat(testCompanyTaxInfo.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testCompanyTaxInfo.getDepositFrequency()).isEqualTo(DEFAULT_DEPOSIT_FREQUENCY);
+        assertThat(testCompanyTaxInfo.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
+        assertThat(testCompanyTaxInfo.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testCompanyTaxInfo.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
     }
 
     @Test
     @Transactional
-    public void createCompanyStateTaxWithExistingId() throws Exception {
-        int databaseSizeBeforeCreate = companyStateTaxRepository.findAll().size();
+    public void createCompanyTaxInfoWithExistingId() throws Exception {
+        int databaseSizeBeforeCreate = companyTaxInfoRepository.findAll().size();
 
-        // Create the CompanyStateTax with an existing ID
-        companyStateTax.setId(1L);
+        // Create the CompanyTaxInfo with an existing ID
+        companyTaxInfo.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restCompanyStateTaxMockMvc.perform(post("/api/company-state-taxes")
+        restCompanyTaxInfoMockMvc.perform(post("/api/company-tax-info")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(companyStateTax)))
+            .content(TestUtil.convertObjectToJsonBytes(companyTaxInfo)))
             .andExpect(status().isBadRequest());
 
-        // Validate the CompanyStateTax in the database
-        List<CompanyStateTax> companyStateTaxList = companyStateTaxRepository.findAll();
-        assertThat(companyStateTaxList).hasSize(databaseSizeBeforeCreate);
+        // Validate the CompanyTaxInfo in the database
+        List<CompanyTaxInfo> companyTaxInfoList = companyTaxInfoRepository.findAll();
+        assertThat(companyTaxInfoList).hasSize(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    public void getAllCompanyStateTaxes() throws Exception {
+    public void getAllCompanyTaxInfoes() throws Exception {
         // Initialize the database
-        companyStateTaxRepository.saveAndFlush(companyStateTax);
+        companyTaxInfoRepository.saveAndFlush(companyTaxInfo);
 
-        // Get all the companyStateTaxList
-        restCompanyStateTaxMockMvc.perform(get("/api/company-state-taxes?sort=id,desc"))
+        // Get all the companyTaxInfoList
+        restCompanyTaxInfoMockMvc.perform(get("/api/company-tax-info?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(companyStateTax.getId().intValue())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(companyTaxInfo.getId().intValue())))
             .andExpect(jsonPath("$.[*].stateCode").value(hasItem(DEFAULT_STATE_CODE.toString())))
             .andExpect(jsonPath("$.[*].taxId").value(hasItem(DEFAULT_TAX_ID.toString())))
             .andExpect(jsonPath("$.[*].rate").value(hasItem(DEFAULT_RATE.doubleValue())))
@@ -191,15 +191,15 @@ public class CompanyStateTaxResourceIntTest {
 
     @Test
     @Transactional
-    public void getCompanyStateTax() throws Exception {
+    public void getCompanyTaxInfo() throws Exception {
         // Initialize the database
-        companyStateTaxRepository.saveAndFlush(companyStateTax);
+        companyTaxInfoRepository.saveAndFlush(companyTaxInfo);
 
-        // Get the companyStateTax
-        restCompanyStateTaxMockMvc.perform(get("/api/company-state-taxes/{id}", companyStateTax.getId()))
+        // Get the companyTaxInfo
+        restCompanyTaxInfoMockMvc.perform(get("/api/company-tax-info/{id}", companyTaxInfo.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.id").value(companyStateTax.getId().intValue()))
+            .andExpect(jsonPath("$.id").value(companyTaxInfo.getId().intValue()))
             .andExpect(jsonPath("$.stateCode").value(DEFAULT_STATE_CODE.toString()))
             .andExpect(jsonPath("$.taxId").value(DEFAULT_TAX_ID.toString()))
             .andExpect(jsonPath("$.rate").value(DEFAULT_RATE.doubleValue()))
@@ -213,25 +213,24 @@ public class CompanyStateTaxResourceIntTest {
 
     @Test
     @Transactional
-    public void getNonExistingCompanyStateTax() throws Exception {
-        // Get the companyStateTax
-        restCompanyStateTaxMockMvc.perform(get("/api/company-state-taxes/{id}", Long.MAX_VALUE))
+    public void getNonExistingCompanyTaxInfo() throws Exception {
+        // Get the companyTaxInfo
+        restCompanyTaxInfoMockMvc.perform(get("/api/company-tax-info/{id}", Long.MAX_VALUE))
             .andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    public void updateCompanyStateTax() throws Exception {
+    public void updateCompanyTaxInfo() throws Exception {
         // Initialize the database
-        companyStateTaxRepository.saveAndFlush(companyStateTax);
-        int databaseSizeBeforeUpdate = companyStateTaxRepository.findAll().size();
+        companyTaxInfoRepository.saveAndFlush(companyTaxInfo);
+        int databaseSizeBeforeUpdate = companyTaxInfoRepository.findAll().size();
 
-        // Update the companyStateTax
-        CompanyStateTax updatedCompanyStateTax = companyStateTaxRepository.findOne(companyStateTax.getId());
-        // Disconnect from session so that the updates on updatedCompanyStateTax are not directly saved in db
-        em.detach(updatedCompanyStateTax);
-        updatedCompanyStateTax
-            .stateCode(UPDATED_STATE_CODE)
+        // Update the companyTaxInfo
+        CompanyTaxInfo updatedCompanyTaxInfo = companyTaxInfoRepository.findOne(companyTaxInfo.getId());
+        // Disconnect from session so that the updates on updatedCompanyTaxInfo are not directly saved in db
+        em.detach(updatedCompanyTaxInfo);
+        updatedCompanyTaxInfo            .stateCode(UPDATED_STATE_CODE)
             .taxId(UPDATED_TAX_ID)
             .rate(UPDATED_RATE)
             .effectiveDate(UPDATED_EFFECTIVE_DATE)
@@ -241,73 +240,73 @@ public class CompanyStateTaxResourceIntTest {
             .createdDate(UPDATED_CREATED_DATE)
             .createdBy(UPDATED_CREATED_BY);
 
-        restCompanyStateTaxMockMvc.perform(put("/api/company-state-taxes")
+        restCompanyTaxInfoMockMvc.perform(put("/api/company-tax-info")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedCompanyStateTax)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedCompanyTaxInfo)))
             .andExpect(status().isOk());
 
-        // Validate the CompanyStateTax in the database
-        List<CompanyStateTax> companyStateTaxList = companyStateTaxRepository.findAll();
-        assertThat(companyStateTaxList).hasSize(databaseSizeBeforeUpdate);
-        CompanyStateTax testCompanyStateTax = companyStateTaxList.get(companyStateTaxList.size() - 1);
-        assertThat(testCompanyStateTax.getStateCode()).isEqualTo(UPDATED_STATE_CODE);
-        assertThat(testCompanyStateTax.getTaxId()).isEqualTo(UPDATED_TAX_ID);
-        assertThat(testCompanyStateTax.getRate()).isEqualTo(UPDATED_RATE);
-        assertThat(testCompanyStateTax.getEffectiveDate()).isEqualTo(UPDATED_EFFECTIVE_DATE);
-        assertThat(testCompanyStateTax.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testCompanyStateTax.getDepositFrequency()).isEqualTo(UPDATED_DEPOSIT_FREQUENCY);
-        assertThat(testCompanyStateTax.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
-        assertThat(testCompanyStateTax.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testCompanyStateTax.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
+        // Validate the CompanyTaxInfo in the database
+        List<CompanyTaxInfo> companyTaxInfoList = companyTaxInfoRepository.findAll();
+        assertThat(companyTaxInfoList).hasSize(databaseSizeBeforeUpdate);
+        CompanyTaxInfo testCompanyTaxInfo = companyTaxInfoList.get(companyTaxInfoList.size() - 1);
+        assertThat(testCompanyTaxInfo.getStateCode()).isEqualTo(UPDATED_STATE_CODE);
+        assertThat(testCompanyTaxInfo.getTaxId()).isEqualTo(UPDATED_TAX_ID);
+        assertThat(testCompanyTaxInfo.getRate()).isEqualTo(UPDATED_RATE);
+        assertThat(testCompanyTaxInfo.getEffectiveDate()).isEqualTo(UPDATED_EFFECTIVE_DATE);
+        assertThat(testCompanyTaxInfo.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testCompanyTaxInfo.getDepositFrequency()).isEqualTo(UPDATED_DEPOSIT_FREQUENCY);
+        assertThat(testCompanyTaxInfo.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
+        assertThat(testCompanyTaxInfo.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testCompanyTaxInfo.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
     }
 
     @Test
     @Transactional
-    public void updateNonExistingCompanyStateTax() throws Exception {
-        int databaseSizeBeforeUpdate = companyStateTaxRepository.findAll().size();
+    public void updateNonExistingCompanyTaxInfo() throws Exception {
+        int databaseSizeBeforeUpdate = companyTaxInfoRepository.findAll().size();
 
-        // Create the CompanyStateTax
+        // Create the CompanyTaxInfo
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
-        restCompanyStateTaxMockMvc.perform(put("/api/company-state-taxes")
+        restCompanyTaxInfoMockMvc.perform(put("/api/company-tax-info")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(companyStateTax)))
+            .content(TestUtil.convertObjectToJsonBytes(companyTaxInfo)))
             .andExpect(status().isCreated());
 
-        // Validate the CompanyStateTax in the database
-        List<CompanyStateTax> companyStateTaxList = companyStateTaxRepository.findAll();
-        assertThat(companyStateTaxList).hasSize(databaseSizeBeforeUpdate + 1);
+        // Validate the CompanyTaxInfo in the database
+        List<CompanyTaxInfo> companyTaxInfoList = companyTaxInfoRepository.findAll();
+        assertThat(companyTaxInfoList).hasSize(databaseSizeBeforeUpdate + 1);
     }
 
     @Test
     @Transactional
-    public void deleteCompanyStateTax() throws Exception {
+    public void deleteCompanyTaxInfo() throws Exception {
         // Initialize the database
-        companyStateTaxRepository.saveAndFlush(companyStateTax);
-        int databaseSizeBeforeDelete = companyStateTaxRepository.findAll().size();
+        companyTaxInfoRepository.saveAndFlush(companyTaxInfo);
+        int databaseSizeBeforeDelete = companyTaxInfoRepository.findAll().size();
 
-        // Get the companyStateTax
-        restCompanyStateTaxMockMvc.perform(delete("/api/company-state-taxes/{id}", companyStateTax.getId())
+        // Get the companyTaxInfo
+        restCompanyTaxInfoMockMvc.perform(delete("/api/company-tax-info/{id}", companyTaxInfo.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<CompanyStateTax> companyStateTaxList = companyStateTaxRepository.findAll();
-        assertThat(companyStateTaxList).hasSize(databaseSizeBeforeDelete - 1);
+        List<CompanyTaxInfo> companyTaxInfoList = companyTaxInfoRepository.findAll();
+        assertThat(companyTaxInfoList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
     @Test
     @Transactional
     public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(CompanyStateTax.class);
-        CompanyStateTax companyStateTax1 = new CompanyStateTax();
-        companyStateTax1.setId(1L);
-        CompanyStateTax companyStateTax2 = new CompanyStateTax();
-        companyStateTax2.setId(companyStateTax1.getId());
-        assertThat(companyStateTax1).isEqualTo(companyStateTax2);
-        companyStateTax2.setId(2L);
-        assertThat(companyStateTax1).isNotEqualTo(companyStateTax2);
-        companyStateTax1.setId(null);
-        assertThat(companyStateTax1).isNotEqualTo(companyStateTax2);
+        TestUtil.equalsVerifier(CompanyTaxInfo.class);
+        CompanyTaxInfo companyTaxInfo1 = new CompanyTaxInfo();
+        companyTaxInfo1.setId(1L);
+        CompanyTaxInfo companyTaxInfo2 = new CompanyTaxInfo();
+        companyTaxInfo2.setId(companyTaxInfo1.getId());
+        assertThat(companyTaxInfo1).isEqualTo(companyTaxInfo2);
+        companyTaxInfo2.setId(2L);
+        assertThat(companyTaxInfo1).isNotEqualTo(companyTaxInfo2);
+        companyTaxInfo1.setId(null);
+        assertThat(companyTaxInfo1).isNotEqualTo(companyTaxInfo2);
     }
 }

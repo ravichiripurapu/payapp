@@ -65,7 +65,7 @@ class EmployeeFederalTaxGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new employeeFederalTax")
+            .exec(http("Create new employeeTaxDeduction")
             .post("/api/employee-federal-taxes")
             .headers(headers_http_authenticated)
             .body(StringBody("""{"id":null, "filingStatusCode":"SAMPLE_TEXT", "exemptFromWithHolding":null, "allowances":"0", "extraWithHolding":null, "employeeCode":"SAMPLE_TEXT", "createdDate":"2020-01-01T00:00:00.000Z", "createdBy":"SAMPLE_TEXT"}""")).asJSON
@@ -73,12 +73,12 @@ class EmployeeFederalTaxGatlingTest extends Simulation {
             .check(headerRegex("Location", "(.*)").saveAs("new_employeeFederalTax_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created employeeFederalTax")
+                exec(http("Get created employeeTaxDeduction")
                 .get("${new_employeeFederalTax_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created employeeFederalTax")
+            .exec(http("Delete created employeeTaxDeduction")
             .delete("${new_employeeFederalTax_url}")
             .headers(headers_http_authenticated))
             .pause(10)

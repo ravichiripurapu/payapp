@@ -7,40 +7,40 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!employeeFederalTax.id">
+        <div class="form-group" [hidden]="!employeeTaxDeduction.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="employeeFederalTax.id" readonly />
+                   [(ngModel)]="employeeTaxDeduction.id" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_filingStatusCode">Filing Status Code</label>
             <input type="text" class="form-control" name="filingStatusCode" id="field_filingStatusCode"
-                [(ngModel)]="employeeFederalTax.filingStatusCode" />
+                [(ngModel)]="employeeTaxDeduction.filingStatusCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_exemptFromWithHolding">Exempt From With Holding</label>
             <input type="checkbox" class="form-control" name="exemptFromWithHolding" id="field_exemptFromWithHolding"
-                [(ngModel)]="employeeFederalTax.exemptFromWithHolding" />
+                [(ngModel)]="employeeTaxDeduction.exemptFromWithHolding" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_allowances">Allowances</label>
             <input type="number" class="form-control" name="allowances" id="field_allowances"
-                [(ngModel)]="employeeFederalTax.allowances" />
+                [(ngModel)]="employeeTaxDeduction.allowances" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_extraWithHolding">Extra With Holding</label>
             <input type="number" class="form-control" name="extraWithHolding" id="field_extraWithHolding"
-                [(ngModel)]="employeeFederalTax.extraWithHolding" />
+                [(ngModel)]="employeeTaxDeduction.extraWithHolding" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_employeeCode">Employee Code</label>
             <input type="text" class="form-control" name="employeeCode" id="field_employeeCode"
-                [(ngModel)]="employeeFederalTax.employeeCode" />
+                [(ngModel)]="employeeTaxDeduction.employeeCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_createdDate">Created Date</label>
             <div class="input-group">
-                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="employeeFederalTax.createdDate"
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="employeeTaxDeduction.createdDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
@@ -50,7 +50,7 @@
         <div class="form-group">
             <label class="form-control-label" for="field_createdBy">Created By</label>
             <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="employeeFederalTax.createdBy" />
+                [(ngModel)]="employeeTaxDeduction.createdBy" />
         </div>
 
     </div>

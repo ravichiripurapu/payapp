@@ -7,45 +7,45 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!payrollEarnings.id">
+        <div class="form-group" [hidden]="!employeePayEarning.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="payrollEarnings.id" readonly />
+                   [(ngModel)]="employeePayEarning.id" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_earningsCode">Earnings Code</label>
             <input type="text" class="form-control" name="earningsCode" id="field_earningsCode"
-                [(ngModel)]="payrollEarnings.earningsCode" />
+                [(ngModel)]="employeePayEarning.earningsCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_hours">Hours</label>
             <input type="number" class="form-control" name="hours" id="field_hours"
-                [(ngModel)]="payrollEarnings.hours" />
+                [(ngModel)]="employeePayEarning.hours" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_periodAmount">Period Amount</label>
             <input type="number" class="form-control" name="periodAmount" id="field_periodAmount"
-                [(ngModel)]="payrollEarnings.periodAmount" />
+                [(ngModel)]="employeePayEarning.periodAmount" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_ytdAmount">Ytd Amount</label>
             <input type="number" class="form-control" name="ytdAmount" id="field_ytdAmount"
-                [(ngModel)]="payrollEarnings.ytdAmount" />
+                [(ngModel)]="employeePayEarning.ytdAmount" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_companyCode">Company Code</label>
             <input type="text" class="form-control" name="companyCode" id="field_companyCode"
-                [(ngModel)]="payrollEarnings.companyCode" />
+                [(ngModel)]="employeePayEarning.companyCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_employeeCode">Employee Code</label>
             <input type="text" class="form-control" name="employeeCode" id="field_employeeCode"
-                [(ngModel)]="payrollEarnings.employeeCode" />
+                [(ngModel)]="employeePayEarning.employeeCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_createdDate">Created Date</label>
             <div class="input-group">
-                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="payrollEarnings.createdDate"
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="employeePayEarning.createdDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
@@ -55,7 +55,7 @@
         <div class="form-group">
             <label class="form-control-label" for="field_createdBy">Created By</label>
             <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="payrollEarnings.createdBy" />
+                [(ngModel)]="employeePayEarning.createdBy" />
         </div>
 
     </div>

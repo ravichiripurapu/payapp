@@ -12,7 +12,7 @@ import { EmployeeFederalTaxService } from './employee-federal-tax.service';
 })
 export class EmployeeFederalTaxDetailComponent implements OnInit, OnDestroy {
 
-    employeeFederalTax: EmployeeFederalTax;
+    employeeTaxDeduction: EmployeeFederalTax;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
@@ -31,8 +31,8 @@ export class EmployeeFederalTaxDetailComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        this.employeeFederalTaxService.find(id).subscribe((employeeFederalTax) => {
-            this.employeeFederalTax = employeeFederalTax;
+        this.employeeFederalTaxService.find(id).subscribe((employeeTaxDeduction) => {
+            this.employeeTaxDeduction = employeeTaxDeduction;
         });
     }
     previousState() {
@@ -47,7 +47,7 @@ export class EmployeeFederalTaxDetailComponent implements OnInit, OnDestroy {
     registerChangeInEmployeeFederalTaxes() {
         this.eventSubscriber = this.eventManager.subscribe(
             'employeeFederalTaxListModification',
-            (response) => this.load(this.employeeFederalTax.id)
+            (response) => this.load(this.employeeTaxDeduction.id)
         );
     }
 }

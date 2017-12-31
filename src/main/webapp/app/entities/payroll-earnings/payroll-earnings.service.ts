@@ -15,16 +15,16 @@ export class PayrollEarningsService {
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(payrollEarnings: PayrollEarnings): Observable<PayrollEarnings> {
-        const copy = this.convert(payrollEarnings);
+    create(employeePayEarning: PayrollEarnings): Observable<PayrollEarnings> {
+        const copy = this.convert(employeePayEarning);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(payrollEarnings: PayrollEarnings): Observable<PayrollEarnings> {
-        const copy = this.convert(payrollEarnings);
+    update(employeePayEarning: PayrollEarnings): Observable<PayrollEarnings> {
+        const copy = this.convert(employeePayEarning);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -70,10 +70,10 @@ export class PayrollEarningsService {
     /**
      * Convert a PayrollEarnings to a JSON which can be sent to the server.
      */
-    private convert(payrollEarnings: PayrollEarnings): PayrollEarnings {
-        const copy: PayrollEarnings = Object.assign({}, payrollEarnings);
+    private convert(employeePayEarning: PayrollEarnings): PayrollEarnings {
+        const copy: PayrollEarnings = Object.assign({}, employeePayEarning);
         copy.createdDate = this.dateUtils
-            .convertLocalDateToServer(payrollEarnings.createdDate);
+            .convertLocalDateToServer(employeePayEarning.createdDate);
         return copy;
     }
 }

@@ -2,17 +2,16 @@ package com.pay.app.domain;
 
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A PayrollEarnings.
+ * A EmployeePayEarning.
  */
 @Entity
-@Table(name = "payroll_earnings")
-public class PayrollEarnings implements Serializable {
+@Table(name = "payroll_deduction")
+public class EmployeePayDeduction implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,17 +19,32 @@ public class PayrollEarnings implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "earnings_code")
-    private String earningsCode;
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "payroll_schedule_code")
+    private String payrollScheduleCode;
+
+    // RI - Regular Income
+    // OT - Overtime Income
+    // SI - Supplemental Income
+    // EED - Employee Deduction
+    // ERD - Employer Deduction
+
+    //
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "deduction_code")
+    private DeductionCode deductionCode;
+
+    @Column(name = "deduction_name")
+    private String deductionName;
 
     @Column(name = "hours")
     private Float hours;
 
     @Column(name = "period_amount")
-    private Float periodAmount;
-
-    @Column(name = "ytd_amount")
-    private Float ytdAmount;
+    private Double periodAmount;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -53,24 +67,63 @@ public class PayrollEarnings implements Serializable {
         this.id = id;
     }
 
-    public String getEarningsCode() {
-        return earningsCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public PayrollEarnings earningsCode(String earningsCode) {
-        this.earningsCode = earningsCode;
+    public String getCode() {
+        return code;
+    }
+
+    public EmployeePayDeduction code(String code) {
+        this.code = code;
         return this;
     }
 
-    public void setEarningsCode(String earningsCode) {
-        this.earningsCode = earningsCode;
+    public String getPayrollScheduleCode() {
+        return payrollScheduleCode;
+    }
+
+    public void setPayrollScheduleCode(String payrollScheduleCode) {
+        this.payrollScheduleCode = payrollScheduleCode;
+    }
+
+    public EmployeePayDeduction payrollScheduleCode(String payrollScheduleCode) {
+        this.payrollScheduleCode = payrollScheduleCode;
+        return this;
+    }
+
+    public DeductionCode getDeductionCode() {
+        return deductionCode;
+    }
+
+    public void setDeductionCode(DeductionCode deductionCode) {
+        this.deductionCode = deductionCode;
+    }
+
+    public EmployeePayDeduction deductionCode(DeductionCode deductionCode) {
+        this.deductionCode = deductionCode;
+        return this;
+    }
+
+    public String getDeductionName() {
+        return deductionName;
+    }
+
+    public void setDeductionName(String deductionName) {
+        this.deductionName = deductionName;
+    }
+
+    public EmployeePayDeduction deductionName(String deductionName) {
+        this.deductionName = deductionName;
+        return this;
     }
 
     public Float getHours() {
         return hours;
     }
 
-    public PayrollEarnings hours(Float hours) {
+    public EmployeePayDeduction hours(Float hours) {
         this.hours = hours;
         return this;
     }
@@ -79,37 +132,24 @@ public class PayrollEarnings implements Serializable {
         this.hours = hours;
     }
 
-    public Float getPeriodAmount() {
+    public Double getPeriodAmount() {
         return periodAmount;
     }
 
-    public PayrollEarnings periodAmount(Float periodAmount) {
+    public EmployeePayDeduction periodAmount(Double periodAmount) {
         this.periodAmount = periodAmount;
         return this;
     }
 
-    public void setPeriodAmount(Float periodAmount) {
+    public void setPeriodAmount(Double periodAmount) {
         this.periodAmount = periodAmount;
-    }
-
-    public Float getYtdAmount() {
-        return ytdAmount;
-    }
-
-    public PayrollEarnings ytdAmount(Float ytdAmount) {
-        this.ytdAmount = ytdAmount;
-        return this;
-    }
-
-    public void setYtdAmount(Float ytdAmount) {
-        this.ytdAmount = ytdAmount;
     }
 
     public String getCompanyCode() {
         return companyCode;
     }
 
-    public PayrollEarnings companyCode(String companyCode) {
+    public EmployeePayDeduction companyCode(String companyCode) {
         this.companyCode = companyCode;
         return this;
     }
@@ -122,7 +162,7 @@ public class PayrollEarnings implements Serializable {
         return employeeCode;
     }
 
-    public PayrollEarnings employeeCode(String employeeCode) {
+    public EmployeePayDeduction employeeCode(String employeeCode) {
         this.employeeCode = employeeCode;
         return this;
     }
@@ -135,7 +175,7 @@ public class PayrollEarnings implements Serializable {
         return createdDate;
     }
 
-    public PayrollEarnings createdDate(LocalDate createdDate) {
+    public EmployeePayDeduction createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -148,7 +188,7 @@ public class PayrollEarnings implements Serializable {
         return createdBy;
     }
 
-    public PayrollEarnings createdBy(String createdBy) {
+    public EmployeePayDeduction createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -166,11 +206,11 @@ public class PayrollEarnings implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PayrollEarnings payrollEarnings = (PayrollEarnings) o;
-        if (payrollEarnings.getId() == null || getId() == null) {
+        EmployeePayDeduction payrollEarning = (EmployeePayDeduction) o;
+        if (payrollEarning.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), payrollEarnings.getId());
+        return Objects.equals(getId(), payrollEarning.getId());
     }
 
     @Override
@@ -180,12 +220,11 @@ public class PayrollEarnings implements Serializable {
 
     @Override
     public String toString() {
-        return "PayrollEarnings{" +
+        return "EmployeePayEarning{" +
             "id=" + getId() +
-            ", earningsCode='" + getEarningsCode() + "'" +
+            ", earningsCode='" + getDeductionName() + "'" +
             ", hours=" + getHours() +
             ", periodAmount=" + getPeriodAmount() +
-            ", ytdAmount=" + getYtdAmount() +
             ", companyCode='" + getCompanyCode() + "'" +
             ", employeeCode='" + getEmployeeCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

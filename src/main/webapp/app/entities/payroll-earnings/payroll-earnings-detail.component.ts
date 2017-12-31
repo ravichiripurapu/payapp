@@ -12,7 +12,7 @@ import { PayrollEarningsService } from './payroll-earnings.service';
 })
 export class PayrollEarningsDetailComponent implements OnInit, OnDestroy {
 
-    payrollEarnings: PayrollEarnings;
+    employeePayEarning: PayrollEarnings;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
@@ -31,8 +31,8 @@ export class PayrollEarningsDetailComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        this.payrollEarningsService.find(id).subscribe((payrollEarnings) => {
-            this.payrollEarnings = payrollEarnings;
+        this.payrollEarningsService.find(id).subscribe((employeePayEarning) => {
+            this.employeePayEarning = employeePayEarning;
         });
     }
     previousState() {
@@ -47,7 +47,7 @@ export class PayrollEarningsDetailComponent implements OnInit, OnDestroy {
     registerChangeInPayrollEarnings() {
         this.eventSubscriber = this.eventManager.subscribe(
             'payrollEarningsListModification',
-            (response) => this.load(this.payrollEarnings.id)
+            (response) => this.load(this.employeePayEarning.id)
         );
     }
 }

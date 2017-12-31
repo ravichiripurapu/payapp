@@ -25,15 +25,15 @@ export class PayrollEarningsPopupService {
             }
 
             if (id) {
-                this.payrollEarningsService.find(id).subscribe((payrollEarnings) => {
-                    if (payrollEarnings.createdDate) {
-                        payrollEarnings.createdDate = {
-                            year: payrollEarnings.createdDate.getFullYear(),
-                            month: payrollEarnings.createdDate.getMonth() + 1,
-                            day: payrollEarnings.createdDate.getDate()
+                this.payrollEarningsService.find(id).subscribe((employeePayEarning) => {
+                    if (employeePayEarning.createdDate) {
+                        employeePayEarning.createdDate = {
+                            year: employeePayEarning.createdDate.getFullYear(),
+                            month: employeePayEarning.createdDate.getMonth() + 1,
+                            day: employeePayEarning.createdDate.getDate()
                         };
                     }
-                    this.ngbModalRef = this.payrollEarningsModalRef(component, payrollEarnings);
+                    this.ngbModalRef = this.payrollEarningsModalRef(component, employeePayEarning);
                     resolve(this.ngbModalRef);
                 });
             } else {
@@ -46,9 +46,9 @@ export class PayrollEarningsPopupService {
         });
     }
 
-    payrollEarningsModalRef(component: Component, payrollEarnings: PayrollEarnings): NgbModalRef {
+    payrollEarningsModalRef(component: Component, employeePayEarning: PayrollEarnings): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.payrollEarnings = payrollEarnings;
+        modalRef.componentInstance.employeePayEarning = employeePayEarning;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

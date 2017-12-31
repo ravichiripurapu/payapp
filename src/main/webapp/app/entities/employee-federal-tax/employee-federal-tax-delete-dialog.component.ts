@@ -14,7 +14,7 @@ import { EmployeeFederalTaxService } from './employee-federal-tax.service';
 })
 export class EmployeeFederalTaxDeleteDialogComponent {
 
-    employeeFederalTax: EmployeeFederalTax;
+    employeeTaxDeduction: EmployeeFederalTax;
 
     constructor(
         private employeeFederalTaxService: EmployeeFederalTaxService,
@@ -31,7 +31,7 @@ export class EmployeeFederalTaxDeleteDialogComponent {
         this.employeeFederalTaxService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'employeeFederalTaxListModification',
-                content: 'Deleted an employeeFederalTax'
+                content: 'Deleted an employeeTaxDeduction'
             });
             this.activeModal.dismiss(true);
         });

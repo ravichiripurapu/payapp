@@ -2,17 +2,16 @@ package com.pay.app.domain;
 
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A CompanyStateTax.
+ * A CompanyEarning.
  */
 @Entity
 @Table(name = "company_state_tax")
-public class CompanyStateTax implements Serializable {
+public class CompanyTaxInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,11 +19,14 @@ public class CompanyStateTax implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "state_code")
-    private String stateCode;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "tax_id")
     private String taxId;
+
+    @Column(name = "state_code")
+    private String stateCode;
 
     @Column(name = "rate")
     private Float rate;
@@ -32,11 +34,11 @@ public class CompanyStateTax implements Serializable {
     @Column(name = "effective_date")
     private LocalDate effectiveDate;
 
-    @Column(name = "status")
-    private String status;
-
     @Column(name = "deposit_frequency")
     private String depositFrequency;
+
+    @Column(name = "status")
+    private String status;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -56,89 +58,102 @@ public class CompanyStateTax implements Serializable {
         this.id = id;
     }
 
-    public String getStateCode() {
-        return stateCode;
+    public String getName() {
+        return name;
     }
 
-    public CompanyStateTax stateCode(String stateCode) {
-        this.stateCode = stateCode;
+    public CompanyTaxInfo name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setStateCode(String stateCode) {
-        this.stateCode = stateCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTaxId() {
         return taxId;
     }
 
-    public CompanyStateTax taxId(String taxId) {
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
+    }
+
+    public CompanyTaxInfo taxId(String taxId) {
         this.taxId = taxId;
         return this;
     }
 
-    public void setTaxId(String taxId) {
-        this.taxId = taxId;
+    public String getStateCode() {
+        return stateCode;
+    }
+
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
+    }
+
+    public CompanyTaxInfo stateCode(String stateCode) {
+        this.stateCode = stateCode;
+        return this;
     }
 
     public Float getRate() {
         return rate;
     }
 
-    public CompanyStateTax rate(Float rate) {
-        this.rate = rate;
-        return this;
-    }
-
     public void setRate(Float rate) {
         this.rate = rate;
+    }
+
+    public CompanyTaxInfo rate(Float rate) {
+        this.rate = rate;
+        return this;
     }
 
     public LocalDate getEffectiveDate() {
         return effectiveDate;
     }
 
-    public CompanyStateTax effectiveDate(LocalDate effectiveDate) {
-        this.effectiveDate = effectiveDate;
-        return this;
-    }
-
     public void setEffectiveDate(LocalDate effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public CompanyStateTax status(String status) {
-        this.status = status;
+    public CompanyTaxInfo effectiveDate(LocalDate effectiveDate) {
+        this.effectiveDate = effectiveDate;
         return this;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getDepositFrequency() {
         return depositFrequency;
     }
 
-    public CompanyStateTax depositFrequency(String depositFrequency) {
+    public void setDepositFrequency(String depositFrequency) {
+        this.depositFrequency = depositFrequency;
+    }
+
+    public CompanyTaxInfo depositFrequency(String depositFrequency) {
         this.depositFrequency = depositFrequency;
         return this;
     }
 
-    public void setDepositFrequency(String depositFrequency) {
-        this.depositFrequency = depositFrequency;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public CompanyTaxInfo status(String status) {
+        this.status = status;
+        return this;
     }
 
     public String getCompanyCode() {
         return companyCode;
     }
 
-    public CompanyStateTax companyCode(String companyCode) {
+    public CompanyTaxInfo companyCode(String companyCode) {
         this.companyCode = companyCode;
         return this;
     }
@@ -151,7 +166,7 @@ public class CompanyStateTax implements Serializable {
         return createdDate;
     }
 
-    public CompanyStateTax createdDate(LocalDate createdDate) {
+    public CompanyTaxInfo createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -164,7 +179,7 @@ public class CompanyStateTax implements Serializable {
         return createdBy;
     }
 
-    public CompanyStateTax createdBy(String createdBy) {
+    public CompanyTaxInfo createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -182,11 +197,11 @@ public class CompanyStateTax implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CompanyStateTax companyStateTax = (CompanyStateTax) o;
-        if (companyStateTax.getId() == null || getId() == null) {
+        CompanyTaxInfo companyEarning = (CompanyTaxInfo) o;
+        if (companyEarning.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), companyStateTax.getId());
+        return Objects.equals(getId(), companyEarning.getId());
     }
 
     @Override
@@ -196,14 +211,9 @@ public class CompanyStateTax implements Serializable {
 
     @Override
     public String toString() {
-        return "CompanyStateTax{" +
+        return "CompanyEarning{" +
             "id=" + getId() +
-            ", stateCode='" + getStateCode() + "'" +
-            ", taxId='" + getTaxId() + "'" +
-            ", rate=" + getRate() +
-            ", effectiveDate='" + getEffectiveDate() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", depositFrequency='" + getDepositFrequency() + "'" +
+            ", name='" + getName() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

@@ -25,15 +25,15 @@ export class EmployeeFederalTaxPopupService {
             }
 
             if (id) {
-                this.employeeFederalTaxService.find(id).subscribe((employeeFederalTax) => {
-                    if (employeeFederalTax.createdDate) {
-                        employeeFederalTax.createdDate = {
-                            year: employeeFederalTax.createdDate.getFullYear(),
-                            month: employeeFederalTax.createdDate.getMonth() + 1,
-                            day: employeeFederalTax.createdDate.getDate()
+                this.employeeFederalTaxService.find(id).subscribe((employeeTaxDeduction) => {
+                    if (employeeTaxDeduction.createdDate) {
+                        employeeTaxDeduction.createdDate = {
+                            year: employeeTaxDeduction.createdDate.getFullYear(),
+                            month: employeeTaxDeduction.createdDate.getMonth() + 1,
+                            day: employeeTaxDeduction.createdDate.getDate()
                         };
                     }
-                    this.ngbModalRef = this.employeeFederalTaxModalRef(component, employeeFederalTax);
+                    this.ngbModalRef = this.employeeFederalTaxModalRef(component, employeeTaxDeduction);
                     resolve(this.ngbModalRef);
                 });
             } else {
@@ -46,9 +46,9 @@ export class EmployeeFederalTaxPopupService {
         });
     }
 
-    employeeFederalTaxModalRef(component: Component, employeeFederalTax: EmployeeFederalTax): NgbModalRef {
+    employeeFederalTaxModalRef(component: Component, employeeTaxDeduction: EmployeeFederalTax): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.employeeFederalTax = employeeFederalTax;
+        modalRef.componentInstance.employeeTaxDeduction = employeeTaxDeduction;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

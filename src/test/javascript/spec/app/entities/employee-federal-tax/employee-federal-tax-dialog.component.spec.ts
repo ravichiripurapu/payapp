@@ -45,7 +45,7 @@ describe('Component Tests', () => {
                         // GIVEN
                         const entity = new EmployeeFederalTax(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(entity));
-                        comp.employeeFederalTax = entity;
+                        comp.employeeTaxDeduction = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -65,7 +65,7 @@ describe('Component Tests', () => {
                         // GIVEN
                         const entity = new EmployeeFederalTax();
                         spyOn(service, 'create').and.returnValue(Observable.of(entity));
-                        comp.employeeFederalTax = entity;
+                        comp.employeeTaxDeduction = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async

@@ -43,7 +43,7 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.find).toHaveBeenCalledWith(123);
-                expect(comp.employeeFederalTax).toEqual(jasmine.objectContaining({id: 123}));
+                expect(comp.employeeTaxDeduction).toEqual(jasmine.objectContaining({id: 123}));
             });
         });
     });

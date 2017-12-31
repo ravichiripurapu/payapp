@@ -1,40 +1,40 @@
 
-<div *ngIf="payrollEarnings">
-    <h2><span>Payroll Earnings</span> {{payrollEarnings.id}}</h2>
+<div *ngIf="employeePayEarning">
+    <h2><span>Payroll Earnings</span> {{employeePayEarning.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
         <dt><span>Earnings Code</span></dt>
         <dd>
-            <span>{{payrollEarnings.earningsCode}}</span>
+            <span>{{employeePayEarning.earningsCode}}</span>
         </dd>
         <dt><span>Hours</span></dt>
         <dd>
-            <span>{{payrollEarnings.hours}}</span>
+            <span>{{employeePayEarning.hours}}</span>
         </dd>
         <dt><span>Period Amount</span></dt>
         <dd>
-            <span>{{payrollEarnings.periodAmount}}</span>
+            <span>{{employeePayEarning.periodAmount}}</span>
         </dd>
         <dt><span>Ytd Amount</span></dt>
         <dd>
-            <span>{{payrollEarnings.ytdAmount}}</span>
+            <span>{{employeePayEarning.ytdAmount}}</span>
         </dd>
         <dt><span>Company Code</span></dt>
         <dd>
-            <span>{{payrollEarnings.companyCode}}</span>
+            <span>{{employeePayEarning.companyCode}}</span>
         </dd>
         <dt><span>Employee Code</span></dt>
         <dd>
-            <span>{{payrollEarnings.employeeCode}}</span>
+            <span>{{employeePayEarning.employeeCode}}</span>
         </dd>
         <dt><span>Created Date</span></dt>
         <dd>
-            <span>{{payrollEarnings.createdDate | date:'mediumDate'}}</span>
+            <span>{{employeePayEarning.createdDate | date:'mediumDate'}}</span>
         </dd>
         <dt><span>Created By</span></dt>
         <dd>
-            <span>{{payrollEarnings.createdBy}}</span>
+            <span>{{employeePayEarning.createdBy}}</span>
         </dd>
     </dl>
 
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'payroll-earnings/'+ payrollEarnings.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'payroll-earnings/'+ employeePayEarning.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

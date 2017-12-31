@@ -16,7 +16,7 @@ import { EmployeeFederalTaxService } from './employee-federal-tax.service';
 })
 export class EmployeeFederalTaxDialogComponent implements OnInit {
 
-    employeeFederalTax: EmployeeFederalTax;
+    employeeTaxDeduction: EmployeeFederalTax;
     isSaving: boolean;
     createdDateDp: any;
 
@@ -37,12 +37,12 @@ export class EmployeeFederalTaxDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.employeeFederalTax.id !== undefined) {
+        if (this.employeeTaxDeduction.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.employeeFederalTaxService.update(this.employeeFederalTax));
+                this.employeeFederalTaxService.update(this.employeeTaxDeduction));
         } else {
             this.subscribeToSaveResponse(
-                this.employeeFederalTaxService.create(this.employeeFederalTax));
+                this.employeeFederalTaxService.create(this.employeeTaxDeduction));
         }
     }
 

@@ -20,6 +20,9 @@ public class PayrollSummary implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "direct_deposit_amount")
     private Double directDepositAmount;
 
@@ -60,6 +63,19 @@ public class PayrollSummary implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public PayrollSummary code(String code) {
+        this.code = code;
+        return this;
     }
 
     public Double getDirectDepositAmount() {

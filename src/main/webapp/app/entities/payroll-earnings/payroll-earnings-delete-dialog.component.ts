@@ -14,7 +14,7 @@ import { PayrollEarningsService } from './payroll-earnings.service';
 })
 export class PayrollEarningsDeleteDialogComponent {
 
-    payrollEarnings: PayrollEarnings;
+    employeePayEarning: PayrollEarnings;
 
     constructor(
         private payrollEarningsService: PayrollEarningsService,
@@ -31,7 +31,7 @@ export class PayrollEarningsDeleteDialogComponent {
         this.payrollEarningsService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'payrollEarningsListModification',
-                content: 'Deleted an payrollEarnings'
+                content: 'Deleted an employeePayEarning'
             });
             this.activeModal.dismiss(true);
         });
