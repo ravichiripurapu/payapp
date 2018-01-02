@@ -1,6 +1,0 @@
-package com.pay.app.domain;
-
-public enum EarningCode {
-    PAY_REGAULAR,PAY_OVERTIME,PAY_JOINING_BONUS, PAY_BONUS, PAY_COMMISSION,
-    PAY_OTHER1, PAY_OTHER2, PAY_OTHER3, PAY_OTHER4, PAY_OTHER5
-}

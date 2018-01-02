@@ -98,7 +98,7 @@ public class AnnualReportsResourceIntTest {
         AnnualReports annualReports = new AnnualReports()
             .year(DEFAULT_YEAR)
             .annualReportType(DEFAULT_ANNUAL_REPORT_TYPE)
-            .annualReport(DEFAULT_ANNUAL_REPORT)
+            .annualReportLocation(DEFAULT_ANNUAL_REPORT)
             .companyCode(DEFAULT_COMPANY_CODE)
             .createdDate(DEFAULT_CREATED_DATE)
             .createdBy(DEFAULT_CREATED_BY);
@@ -127,7 +127,7 @@ public class AnnualReportsResourceIntTest {
         AnnualReports testAnnualReports = annualReportsList.get(annualReportsList.size() - 1);
         assertThat(testAnnualReports.getYear()).isEqualTo(DEFAULT_YEAR);
         assertThat(testAnnualReports.getAnnualReportType()).isEqualTo(DEFAULT_ANNUAL_REPORT_TYPE);
-        assertThat(testAnnualReports.getAnnualReport()).isEqualTo(DEFAULT_ANNUAL_REPORT);
+        assertThat(testAnnualReports.getAnnualReportLocation()).isEqualTo(DEFAULT_ANNUAL_REPORT);
         assertThat(testAnnualReports.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
         assertThat(testAnnualReports.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testAnnualReports.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
@@ -212,7 +212,7 @@ public class AnnualReportsResourceIntTest {
         updatedAnnualReports
             .year(UPDATED_YEAR)
             .annualReportType(UPDATED_ANNUAL_REPORT_TYPE)
-            .annualReport(UPDATED_ANNUAL_REPORT)
+            .annualReportLocation(UPDATED_ANNUAL_REPORT)
             .companyCode(UPDATED_COMPANY_CODE)
             .createdDate(UPDATED_CREATED_DATE)
             .createdBy(UPDATED_CREATED_BY);
@@ -228,7 +228,7 @@ public class AnnualReportsResourceIntTest {
         AnnualReports testAnnualReports = annualReportsList.get(annualReportsList.size() - 1);
         assertThat(testAnnualReports.getYear()).isEqualTo(UPDATED_YEAR);
         assertThat(testAnnualReports.getAnnualReportType()).isEqualTo(UPDATED_ANNUAL_REPORT_TYPE);
-        assertThat(testAnnualReports.getAnnualReport()).isEqualTo(UPDATED_ANNUAL_REPORT);
+        assertThat(testAnnualReports.getAnnualReportLocation()).isEqualTo(UPDATED_ANNUAL_REPORT);
         assertThat(testAnnualReports.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
         assertThat(testAnnualReports.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testAnnualReports.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);

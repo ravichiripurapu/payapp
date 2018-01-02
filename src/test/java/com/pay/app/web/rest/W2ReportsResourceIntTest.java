@@ -97,7 +97,7 @@ public class W2ReportsResourceIntTest {
     public static W2Reports createEntity(EntityManager em) {
         W2Reports w2Reports = new W2Reports()
             .year(DEFAULT_YEAR)
-            .w2Report(DEFAULT_W_2_REPORT)
+            .w2ReportLocation(DEFAULT_W_2_REPORT)
             .employeeCode(DEFAULT_EMPLOYEE_CODE)
             .companyCode(DEFAULT_COMPANY_CODE)
             .createdDate(DEFAULT_CREATED_DATE)
@@ -126,7 +126,7 @@ public class W2ReportsResourceIntTest {
         assertThat(w2ReportsList).hasSize(databaseSizeBeforeCreate + 1);
         W2Reports testW2Reports = w2ReportsList.get(w2ReportsList.size() - 1);
         assertThat(testW2Reports.getYear()).isEqualTo(DEFAULT_YEAR);
-        assertThat(testW2Reports.getw2Report()).isEqualTo(DEFAULT_W_2_REPORT);
+        assertThat(testW2Reports.getw2ReportLocation()).isEqualTo(DEFAULT_W_2_REPORT);
         assertThat(testW2Reports.getEmployeeCode()).isEqualTo(DEFAULT_EMPLOYEE_CODE);
         assertThat(testW2Reports.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
         assertThat(testW2Reports.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
@@ -211,7 +211,7 @@ public class W2ReportsResourceIntTest {
         em.detach(updatedW2Reports);
         updatedW2Reports
             .year(UPDATED_YEAR)
-            .w2Report(UPDATED_W_2_REPORT)
+            .w2ReportLocation(UPDATED_W_2_REPORT)
             .employeeCode(UPDATED_EMPLOYEE_CODE)
             .companyCode(UPDATED_COMPANY_CODE)
             .createdDate(UPDATED_CREATED_DATE)
@@ -227,7 +227,7 @@ public class W2ReportsResourceIntTest {
         assertThat(w2ReportsList).hasSize(databaseSizeBeforeUpdate);
         W2Reports testW2Reports = w2ReportsList.get(w2ReportsList.size() - 1);
         assertThat(testW2Reports.getYear()).isEqualTo(UPDATED_YEAR);
-        assertThat(testW2Reports.getw2Report()).isEqualTo(UPDATED_W_2_REPORT);
+        assertThat(testW2Reports.getw2ReportLocation()).isEqualTo(UPDATED_W_2_REPORT);
         assertThat(testW2Reports.getEmployeeCode()).isEqualTo(UPDATED_EMPLOYEE_CODE);
         assertThat(testW2Reports.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
         assertThat(testW2Reports.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);

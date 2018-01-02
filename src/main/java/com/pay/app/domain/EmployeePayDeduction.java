@@ -1,6 +1,8 @@
 package com.pay.app.domain;
 
 
+import com.pay.app.enumerations.DeductionCode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;

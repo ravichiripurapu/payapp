@@ -1,6 +1,8 @@
 package com.pay.app.domain;
 
 
+import com.pay.app.enumerations.TaxCode;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -26,6 +28,9 @@ public class EmployeeTaxDeduction implements Serializable {
 
     @Column(name = "tax_name")
     private String taxName;
+
+    @Column(name = "tax_id")
+    private String taxId;
 
     @Column(name = "with_holding_amount")
     private Double withHoldingAmount;

@@ -26,8 +26,8 @@ public class AnnualReports implements Serializable {
     @Column(name = "annual_report_type")
     private String annualReportType;
 
-    @Column(name = "annual_report")
-    private String annualReport;
+    @Column(name = "annual_report_location")
+    private String annualReportLocation;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -73,17 +73,17 @@ public class AnnualReports implements Serializable {
         this.annualReportType = annualReportType;
     }
 
-    public String getAnnualReport() {
-        return annualReport;
+    public String getAnnualReportLocation() {
+        return annualReportLocation;
     }
 
-    public AnnualReports annualReport(String annualReport) {
-        this.annualReport = annualReport;
+    public AnnualReports annualReportLocation(String annualReportLocation) {
+        this.annualReportLocation = annualReportLocation;
         return this;
     }
 
-    public void setAnnualReport(String annualReport) {
-        this.annualReport = annualReport;
+    public void setAnnualReportLocation(String annualReportLocation) {
+        this.annualReportLocation = annualReportLocation;
     }
 
     public String getCompanyCode() {
@@ -152,7 +152,7 @@ public class AnnualReports implements Serializable {
             "id=" + getId() +
             ", year=" + getYear() +
             ", annualReportType='" + getAnnualReportType() + "'" +
-            ", annualReport='" + getAnnualReport() + "'" +
+            ", annualReport='" + getAnnualReportLocation() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

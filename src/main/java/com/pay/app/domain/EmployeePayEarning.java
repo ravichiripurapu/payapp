@@ -1,6 +1,8 @@
 package com.pay.app.domain;
 
 
+import com.pay.app.enumerations.EarningCode;
+
 import javax.persistence.*;
 
 import java.io.Serializable;

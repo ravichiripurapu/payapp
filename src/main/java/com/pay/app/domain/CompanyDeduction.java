@@ -1,6 +1,8 @@
 package com.pay.app.domain;
 
 
+import com.pay.app.enumerations.DeductionCode;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -23,14 +25,8 @@ public class CompanyDeduction implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "jhi_desc")
-    private String desc;
-
-    @Column(name = "deduction_type")
-    private String deductionType;
-
-    @Column(name = "deduction_sub_type")
-    private String deductionSubType;
+    @Column(name = "deduction_code")
+    private DeductionCode deductionCode;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -63,43 +59,12 @@ public class CompanyDeduction implements Serializable {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public DeductionCode getDeductionCode() {
+        return deductionCode;
     }
 
-    public CompanyDeduction desc(String desc) {
-        this.desc = desc;
-        return this;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getDeductionType() {
-        return deductionType;
-    }
-
-    public CompanyDeduction deductionType(String deductionType) {
-        this.deductionType = deductionType;
-        return this;
-    }
-
-    public void setDeductionType(String deductionType) {
-        this.deductionType = deductionType;
-    }
-
-    public String getDeductionSubType() {
-        return deductionSubType;
-    }
-
-    public CompanyDeduction deductionSubType(String deductionSubType) {
-        this.deductionSubType = deductionSubType;
-        return this;
-    }
-
-    public void setDeductionSubType(String deductionSubType) {
-        this.deductionSubType = deductionSubType;
+    public void setDeductionCode(DeductionCode deductionCode) {
+        this.deductionCode = deductionCode;
     }
 
     public String getCompanyCode() {
@@ -167,9 +132,6 @@ public class CompanyDeduction implements Serializable {
         return "CompanyDeduction{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", desc='" + getDesc() + "'" +
-            ", deductionType='" + getDeductionType() + "'" +
-            ", deductionSubType='" + getDeductionSubType() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

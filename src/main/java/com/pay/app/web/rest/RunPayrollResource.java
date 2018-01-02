@@ -3,6 +3,7 @@ package com.pay.app.web.rest;
 import com.codahale.metrics.annotation.Timed;
 
 import com.pay.app.domain.EmployeePay;
+import com.pay.app.domain.EmployeePayEarning;
 import com.pay.app.domain.PayrollSummary;
 import com.pay.app.dto.RunPayroll;
 import com.pay.app.repository.EmployeePayEarningRepository;
@@ -68,7 +69,7 @@ public class RunPayrollResource {
                 // String employee
                 String employee = employeePay.getEmployeeCode();
 
-                // String get
+
 
                 STE.clearPayrollCalculations();
 
@@ -78,13 +79,20 @@ public class RunPayrollResource {
                 STE.setCalculationMethod(FEDERAL_LOCATION_CODE, CalcMethod.ANNUALIZED,CalcMethod.NONE);
                 Money zero = Money.zero();
 
-                // put employee wages
-                // zeros are the following order : month to date, quarter to date, year to date
-                // In general put the year to date values only.
-                // month to date is not needed
-                // quarter to date is not needed
-                STE.setWages(FEDERAL_LOCATION_CODE, WageType.REGULAR, new Hours(40.00),
-                    new Money(5000.00), zero, zero, zero);
+                List<EmployeePayEarning> employeePayEarnings = employeePay.getEmployeePayEarnings();
+
+                for (EmployeePayEarning employeePayEarning : employeePayEarnings) {
+
+                    // put employee wages
+                    // zeros are the following order : month to date, quarter to date, year to date
+                    // In general put the year to date values only.
+                    // month to date is not needed
+                    // quarter to date is not needed
+                    STE.setWages(FEDERAL_LOCATION_CODE, WageType.REGULAR, new Hours(40.00),
+                        new Money(5000.00), zero, zero, zero);
+                }
+
+                // Get EmployeeFederalTax and set the values appropriately
 
                 // Set W4 Information
                 // three zeros : additional with holding, year_to_date, most recent with holding
@@ -99,6 +107,7 @@ public class RunPayrollResource {
 
                 // Verify if the we need to set EIC.
                 STE.setEICParameters(EarnedIncomeCredit.SINGLE, zero, false);
+
                 // The code for Indianapolis, Indiana (Marion County) is "18-097-452890"
                 // The state GNIS code is 18
                 // The county GNIS code is 097
@@ -107,8 +116,77 @@ public class RunPayrollResource {
                 // State Params (State Location code : 18 is state, 097 is county, 452890 is local"
                 // state default rounding
                 // three zeros : additional with holding, year_to_date, most recent with holding
+
+                // Get Employee Resident Location
+                // Get Employee Work Location
+
                 STE.setStateParameters("18-097-452890", true, false,
                     StateRounding.DEFAULTROUNDING, zero, zero, zero, false);
+
+                // Set State Unemployement Insurace for Alaska, New Jersey, and Pennsylvania states only.
+
+                /**
+                 *
+                 * See Page 18 for example
+                 *
+                 There are currently three states that contain employee based state unemployment insurance. They
+                 are Alaska, New Jersey, and Pennsylvania.
+
+                 Unemployment insurance is withheld from employee wages as a percentage of the employee’s taxable earnings until a wage base has been reached.
+                 While the Commonwealth of Pennsylvania based their SUI Calculations on gross Regular and Supple-
+                 mental wages, the States of New Jersey and Alaska both base the SUI calculation on SUTA wages.
+                 Thus, the WageType in setWages that is being considered in these two states is
+                 SUTA_GROSS_WAGES.
+
+                 */
+
+                /**
+                State Disability Insurance (SDI)
+                There are currently five states and one territory that contain employee based state disability insur-
+                    ance. They are California, Hawaii (Temporary Disability Insurance), New Jersey, New York, Rhode Is-
+                    land, Puerto Rico.
+                 */
+
+                /**
+                 Family Leave Insurance (FLI) The New Jersey family leave insurance tax is withheld from employee wages as a percentage of the em-
+                 ployee’s taxable earnings until a wage base has been reached.
+
+                 This tax is calculated on SUTA wages,
+                 so the WageType that will need to be used is SUTA_GROSS_WAGES
+
+                 */
+
+                /**
+
+                 The New York Family Leave Insurance tax is withheld from employee wages as a percentage of the
+                 employee’s taxable earnings until a weekly maximum withholding has been reache
+                 d.  This tax is calcu-
+                 lated on Regular, Supplemental and Tip wages, so the WageType that will need to be used are REGU-
+                 LAR, SUPPLEMENTAL and TIPS.
+
+
+                 https://www.apspayroll.com/resources/payroll-taxes-rates-and-changes/suta-wage-bases/
+
+                 */
+
+                /**
+
+                 New Jersey Health Care Subsidy Fund (HCSF)
+                 The New Jersey health care subsidy fund is a Tax which is withheld from employee wages as a per-
+                 centage of the employee’s taxable earnings until a wage base has been reached. The tax is currently
+                 at a rate of 0%.
+
+                 */
+
+                /**
+
+                 Workers Compensation (WC)
+                 There are two states with employee based workers compensation. They are New M
+                 exico and Oregon.
+                 The New Mexico tax is based per quarter and is prorated, while the Oregon tax is on a per hour basis.
+                 An example for New Mexico has been provided.
+
+                 */
 
                 // State calculation method.
                 STE.setCalculationMethod("18-097-452890", CalcMethod.ANNUALIZED, CalcMethod.NONE);
@@ -124,6 +202,7 @@ public class RunPayrollResource {
 
                 // Set County Parameters
                 STE.setCountyParameters("18-097-452890", false, true);
+
                 // The miscellaneous parameters vary by state
                 // Indiana requires the following two parameters to withhold state tax
 

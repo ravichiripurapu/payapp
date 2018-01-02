@@ -1,6 +1,8 @@
 package com.pay.app.domain;
 
 
+import com.pay.app.enumerations.TaxCode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,7 +12,7 @@ import java.util.Objects;
  * A CompanyEarning.
  */
 @Entity
-@Table(name = "company_state_tax")
+@Table(name = "company_tax_info")
 public class CompanyTaxInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,6 +20,13 @@ public class CompanyTaxInfo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "code")
+    private String code;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tax_code")
+    private TaxCode taxCode;
 
     @Column(name = "name")
     private String name;

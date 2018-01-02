@@ -26,8 +26,8 @@ public class QuarterlyReports implements Serializable {
     @Column(name = "quarter_number")
     private Integer quarterNumber;
 
-    @Column(name = "quaterly_report")
-    private String quaterlyReport;
+    @Column(name = "quaterly_report_location")
+    private String quaterlyReportLocation;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -73,17 +73,18 @@ public class QuarterlyReports implements Serializable {
         this.quarterNumber = quarterNumber;
     }
 
-    public String getQuaterlyReport() {
-        return quaterlyReport;
+    public String getQuaterlyReportLocation() {
+        return quaterlyReportLocation;
     }
 
-    public QuarterlyReports quaterlyReport(String quaterlyReport) {
-        this.quaterlyReport = quaterlyReport;
+    public QuarterlyReports quaterlyReportLocation(String quaterlyReportLocation) {
+        this.quaterlyReportLocation = quaterlyReportLocation;
         return this;
     }
 
-    public void setQuaterlyReport(String quaterlyReport) {
-        this.quaterlyReport = quaterlyReport;
+    public void setQuaterlyReportLocation(String quaterlyReportLocation)
+    {
+        this.quaterlyReportLocation = quaterlyReportLocation;
     }
 
     public String getCompanyCode() {
@@ -152,7 +153,7 @@ public class QuarterlyReports implements Serializable {
             "id=" + getId() +
             ", year=" + getYear() +
             ", quarterNumber=" + getQuarterNumber() +
-            ", quaterlyReport='" + getQuaterlyReport() + "'" +
+            ", quaterlyReport='" + getQuaterlyReportLocation() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

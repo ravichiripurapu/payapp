@@ -23,8 +23,8 @@ public class W2Reports implements Serializable {
     @Column(name = "jhi_year")
     private Integer year;
 
-    @Column(name = "w_2_report")
-    private String w2Report;
+    @Column(name = "w2_report_location")
+    private String w2ReportLocation;
 
     @Column(name = "employee_code")
     private String employeeCode;
@@ -60,17 +60,17 @@ public class W2Reports implements Serializable {
         this.year = year;
     }
 
-    public String getw2Report() {
-        return w2Report;
+    public String getw2ReportLocation() {
+        return w2ReportLocation;
     }
 
-    public W2Reports w2Report(String w2Report) {
-        this.w2Report = w2Report;
+    public W2Reports w2ReportLocation(String w2ReportLocation) {
+        this.w2ReportLocation = w2ReportLocation;
         return this;
     }
 
-    public void setw2Report(String w2Report) {
-        this.w2Report = w2Report;
+    public void setw2ReportLocation(String w2ReportLocation) {
+        this.w2ReportLocation = w2ReportLocation;
     }
 
     public String getEmployeeCode() {
@@ -151,7 +151,7 @@ public class W2Reports implements Serializable {
         return "W2Reports{" +
             "id=" + getId() +
             ", year=" + getYear() +
-            ", w2Report='" + getw2Report() + "'" +
+            ", w2Report='" + getw2ReportLocation() + "'" +
             ", employeeCode='" + getEmployeeCode() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
