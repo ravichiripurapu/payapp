@@ -12,7 +12,7 @@ import { CompanyEarningService } from './company-earning.service';
 })
 export class CompanyEarningDetailComponent implements OnInit, OnDestroy {
 
-    companyEarning: CompanyEarning;
+    companyEarningType: CompanyEarning;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
@@ -31,8 +31,8 @@ export class CompanyEarningDetailComponent implements OnInit, OnDestroy {
     }
 
     load(id) {
-        this.companyEarningService.find(id).subscribe((companyEarning) => {
-            this.companyEarning = companyEarning;
+        this.companyEarningService.find(id).subscribe((companyEarningType) => {
+            this.companyEarningType = companyEarningType;
         });
     }
     previousState() {
@@ -47,7 +47,7 @@ export class CompanyEarningDetailComponent implements OnInit, OnDestroy {
     registerChangeInCompanyEarnings() {
         this.eventSubscriber = this.eventManager.subscribe(
             'companyEarningListModification',
-            (response) => this.load(this.companyEarning.id)
+            (response) => this.load(this.companyEarningType.id)
         );
     }
 }

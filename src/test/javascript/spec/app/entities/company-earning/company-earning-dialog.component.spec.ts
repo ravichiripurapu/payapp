@@ -45,7 +45,7 @@ describe('Component Tests', () => {
                         // GIVEN
                         const entity = new CompanyEarning(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(entity));
-                        comp.companyEarning = entity;
+                        comp.companyEarningType = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -65,7 +65,7 @@ describe('Component Tests', () => {
                         // GIVEN
                         const entity = new CompanyEarning();
                         spyOn(service, 'create').and.returnValue(Observable.of(entity));
-                        comp.companyEarning = entity;
+                        comp.companyEarningType = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async

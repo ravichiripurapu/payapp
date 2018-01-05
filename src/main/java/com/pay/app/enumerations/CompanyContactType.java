@@ -1,13 +1,12 @@
 package com.pay.app.enumerations;
 
-public enum BankAccountType {
+public enum CompanyContactType  {
 
-    SAVINGS("Savings"),
-    CHECKINGS("Checkings");
+    PAYROLLADMIN("Payroll Admin");
 
     private String name;
 
-    BankAccountType(String name) {
+    CompanyContactType(String name) {
         this.name = name;
     }
 

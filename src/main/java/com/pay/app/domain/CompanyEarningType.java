@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A QuarterlyReports.
+ * A CompanyEarningType.
  */
 @Entity
-@Table(name = "quarterly_reports")
-public class QuarterlyReports implements Serializable {
+@Table(name = "company_earning_type")
+public class CompanyEarningType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,14 +20,14 @@ public class QuarterlyReports implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "jhi_year")
-    private Integer year;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "quarter_number")
-    private Integer quarterNumber;
+    @Column(name = "desc")
+    private String desc;
 
-    @Column(name = "quarterly_report_location")
-    private String quarterlyReportLocation;
+    @Column(name = "abbreviation")
+    private String abbreviation;
 
     @Column(name = "company_code")
     private String companyCode;
@@ -47,51 +47,50 @@ public class QuarterlyReports implements Serializable {
         this.id = id;
     }
 
-    public Integer getYear() {
-        return year;
+    public String getName() {
+        return name;
     }
 
-    public QuarterlyReports year(Integer year) {
-        this.year = year;
+    public CompanyEarningType name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getQuarterNumber() {
-        return quarterNumber;
+    public String getDesc() {
+        return desc;
     }
 
-    public QuarterlyReports quarterNumber(Integer quarterNumber) {
-        this.quarterNumber = quarterNumber;
+    public CompanyEarningType desc(String desc) {
+        this.desc = desc;
         return this;
     }
 
-    public void setQuarterNumber(Integer quarterNumber) {
-        this.quarterNumber = quarterNumber;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getQuarterlyReportLocation() {
-        return quarterlyReportLocation;
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    public QuarterlyReports quarterlyReportLocation(String quarterlyReportLocation) {
-        this.quarterlyReportLocation = quarterlyReportLocation;
+    public CompanyEarningType abbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
         return this;
     }
 
-    public void setQuarterlyReportLocation(String quarterlyReportLocation)
-    {
-        this.quarterlyReportLocation = quarterlyReportLocation;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
     public String getCompanyCode() {
         return companyCode;
     }
 
-    public QuarterlyReports companyCode(String companyCode) {
+    public CompanyEarningType companyCode(String companyCode) {
         this.companyCode = companyCode;
         return this;
     }
@@ -104,7 +103,7 @@ public class QuarterlyReports implements Serializable {
         return createdDate;
     }
 
-    public QuarterlyReports createdDate(LocalDate createdDate) {
+    public CompanyEarningType createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
@@ -117,7 +116,7 @@ public class QuarterlyReports implements Serializable {
         return createdBy;
     }
 
-    public QuarterlyReports createdBy(String createdBy) {
+    public CompanyEarningType createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
     }
@@ -135,11 +134,11 @@ public class QuarterlyReports implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        QuarterlyReports quarterlyReports = (QuarterlyReports) o;
-        if (quarterlyReports.getId() == null || getId() == null) {
+        CompanyEarningType companyEarningType = (CompanyEarningType) o;
+        if (companyEarningType.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), quarterlyReports.getId());
+        return Objects.equals(getId(), companyEarningType.getId());
     }
 
     @Override
@@ -149,11 +148,11 @@ public class QuarterlyReports implements Serializable {
 
     @Override
     public String toString() {
-        return "QuarterlyReports{" +
+        return "CompanyEarningType{" +
             "id=" + getId() +
-            ", year=" + getYear() +
-            ", quarterNumber=" + getQuarterNumber() +
-            ", quaterlyReport='" + getQuarterlyReportLocation()+ "'" +
+            ", name='" + getName() + "'" +
+            ", desc='" + getDesc() + "'" +
+            ", abbreviation='" + getAbbreviation() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +

@@ -14,7 +14,7 @@ import { CompanyEarningService } from './company-earning.service';
 })
 export class CompanyEarningDeleteDialogComponent {
 
-    companyEarning: CompanyEarning;
+    companyEarningType: CompanyEarning;
 
     constructor(
         private companyEarningService: CompanyEarningService,
@@ -31,7 +31,7 @@ export class CompanyEarningDeleteDialogComponent {
         this.companyEarningService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'companyEarningListModification',
-                content: 'Deleted an companyEarning'
+                content: 'Deleted an companyEarningType'
             });
             this.activeModal.dismiss(true);
         });

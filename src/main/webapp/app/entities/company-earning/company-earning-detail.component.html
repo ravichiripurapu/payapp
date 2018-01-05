@@ -1,32 +1,32 @@
 
-<div *ngIf="companyEarning">
-    <h2><span>Company Earning</span> {{companyEarning.id}}</h2>
+<div *ngIf="companyEarningType">
+    <h2><span>Company Earning</span> {{companyEarningType.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
         <dt><span>Name</span></dt>
         <dd>
-            <span>{{companyEarning.name}}</span>
+            <span>{{companyEarningType.name}}</span>
         </dd>
         <dt><span>Desc</span></dt>
         <dd>
-            <span>{{companyEarning.desc}}</span>
+            <span>{{companyEarningType.desc}}</span>
         </dd>
         <dt><span>Abbreviation</span></dt>
         <dd>
-            <span>{{companyEarning.abbreviation}}</span>
+            <span>{{companyEarningType.abbreviation}}</span>
         </dd>
         <dt><span>Company Code</span></dt>
         <dd>
-            <span>{{companyEarning.companyCode}}</span>
+            <span>{{companyEarningType.companyCode}}</span>
         </dd>
         <dt><span>Created Date</span></dt>
         <dd>
-            <span>{{companyEarning.createdDate | date:'mediumDate'}}</span>
+            <span>{{companyEarningType.createdDate | date:'mediumDate'}}</span>
         </dd>
         <dt><span>Created By</span></dt>
         <dd>
-            <span>{{companyEarning.createdBy}}</span>
+            <span>{{companyEarningType.createdBy}}</span>
         </dd>
     </dl>
 
@@ -37,7 +37,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarning.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarningType.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

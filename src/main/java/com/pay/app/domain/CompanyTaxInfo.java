@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A CompanyEarning.
+ * A CompanyEarningType.
  */
 @Entity
 @Table(name = "company_tax_info")
@@ -220,7 +220,7 @@ public class CompanyTaxInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "CompanyEarning{" +
+        return "CompanyEarningType{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", companyCode='" + getCompanyCode() + "'" +

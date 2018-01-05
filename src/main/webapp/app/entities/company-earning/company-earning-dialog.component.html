@@ -7,35 +7,35 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!companyEarning.id">
+        <div class="form-group" [hidden]="!companyEarningType.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="companyEarning.id" readonly />
+                   [(ngModel)]="companyEarningType.id" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="companyEarning.name" />
+                [(ngModel)]="companyEarningType.name" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_desc">Desc</label>
             <input type="text" class="form-control" name="desc" id="field_desc"
-                [(ngModel)]="companyEarning.desc" />
+                [(ngModel)]="companyEarningType.desc" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_abbreviation">Abbreviation</label>
             <input type="text" class="form-control" name="abbreviation" id="field_abbreviation"
-                [(ngModel)]="companyEarning.abbreviation" />
+                [(ngModel)]="companyEarningType.abbreviation" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_companyCode">Company Code</label>
             <input type="text" class="form-control" name="companyCode" id="field_companyCode"
-                [(ngModel)]="companyEarning.companyCode" />
+                [(ngModel)]="companyEarningType.companyCode" />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_createdDate">Created Date</label>
             <div class="input-group">
-                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="companyEarning.createdDate"
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="companyEarningType.createdDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
@@ -45,7 +45,7 @@
         <div class="form-group">
             <label class="form-control-label" for="field_createdBy">Created By</label>
             <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="companyEarning.createdBy" />
+                [(ngModel)]="companyEarningType.createdBy" />
         </div>
 
     </div>

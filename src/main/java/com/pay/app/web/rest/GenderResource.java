@@ -21,7 +21,7 @@ public class GenderResource {
      *
      * @return the ResponseEntity with status 200 (OK) and the list of states in body
      */
-    @GetMapping("/genderss")
+    @GetMapping("/genders")
     @Timed
     public List<Gender> getAllGenders() {
         return Arrays.asList(Gender.values());

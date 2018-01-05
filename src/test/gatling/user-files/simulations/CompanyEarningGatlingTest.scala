@@ -65,7 +65,7 @@ class CompanyEarningGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new companyEarning")
+            .exec(http("Create new companyEarningType")
             .post("/api/company-earnings")
             .headers(headers_http_authenticated)
             .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "desc":"SAMPLE_TEXT", "abbreviation":"SAMPLE_TEXT", "companyCode":"SAMPLE_TEXT", "createdDate":"2020-01-01T00:00:00.000Z", "createdBy":"SAMPLE_TEXT"}""")).asJSON
@@ -73,12 +73,12 @@ class CompanyEarningGatlingTest extends Simulation {
             .check(headerRegex("Location", "(.*)").saveAs("new_companyEarning_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created companyEarning")
+                exec(http("Get created companyEarningType")
                 .get("${new_companyEarning_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created companyEarning")
+            .exec(http("Delete created companyEarningType")
             .delete("${new_companyEarning_url}")
             .headers(headers_http_authenticated))
             .pause(10)

@@ -42,7 +42,7 @@ describe('Service Tests', () => {
                 service.find(123).subscribe(() => {});
 
                 expect(this.lastConnection).toBeDefined();
-                expect(this.lastConnection.request.url).toEqual('api/company-earnings/' + 123);
+                expect(this.lastConnection.request.url).toEqual('api/company-earning-types/' + 123);
             });
             it('should return CompanyEarning', () => {
 

@@ -27,24 +27,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let companyEarning of companyEarnings ;trackBy: trackId">
-                <td><a [routerLink]="['../company-earning', companyEarning.id ]">{{companyEarning.id}}</a></td>
-                <td>{{companyEarning.name}}</td>
-                <td>{{companyEarning.desc}}</td>
-                <td>{{companyEarning.abbreviation}}</td>
-                <td>{{companyEarning.companyCode}}</td>
-                <td>{{companyEarning.createdDate | date:'mediumDate'}}</td>
-                <td>{{companyEarning.createdBy}}</td>
+            <tr *ngFor="let companyEarningType of companyEarnings ;trackBy: trackId">
+                <td><a [routerLink]="['../company-earning', companyEarningType.id ]">{{companyEarningType.id}}</a></td>
+                <td>{{companyEarningType.name}}</td>
+                <td>{{companyEarningType.desc}}</td>
+                <td>{{companyEarningType.abbreviation}}</td>
+                <td>{{companyEarningType.companyCode}}</td>
+                <td>{{companyEarningType.createdDate | date:'mediumDate'}}</td>
+                <td>{{companyEarningType.createdBy}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../company-earning', companyEarning.id ]"
+                                [routerLink]="['../company-earning', companyEarningType.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarning.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarningType.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -52,7 +52,7 @@
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarning.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'company-earning/'+ companyEarningType.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

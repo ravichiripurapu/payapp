@@ -98,7 +98,7 @@ public class QuarterlyReportsResourceIntTest {
         QuarterlyReports quarterlyReports = new QuarterlyReports()
             .year(DEFAULT_YEAR)
             .quarterNumber(DEFAULT_QUARTER_NUMBER)
-            .quaterlyReportLocation(DEFAULT_QUATERLY_REPORT)
+            .quarterlyReportLocation(DEFAULT_QUATERLY_REPORT)
             .companyCode(DEFAULT_COMPANY_CODE)
             .createdDate(DEFAULT_CREATED_DATE)
             .createdBy(DEFAULT_CREATED_BY);
@@ -127,7 +127,7 @@ public class QuarterlyReportsResourceIntTest {
         QuarterlyReports testQuarterlyReports = quarterlyReportsList.get(quarterlyReportsList.size() - 1);
         assertThat(testQuarterlyReports.getYear()).isEqualTo(DEFAULT_YEAR);
         assertThat(testQuarterlyReports.getQuarterNumber()).isEqualTo(DEFAULT_QUARTER_NUMBER);
-        assertThat(testQuarterlyReports.getQuaterlyReportLocation()).isEqualTo(DEFAULT_QUATERLY_REPORT);
+        assertThat(testQuarterlyReports.getQuarterlyReportLocation()).isEqualTo(DEFAULT_QUATERLY_REPORT);
         assertThat(testQuarterlyReports.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
         assertThat(testQuarterlyReports.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testQuarterlyReports.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
@@ -212,7 +212,7 @@ public class QuarterlyReportsResourceIntTest {
         updatedQuarterlyReports
             .year(UPDATED_YEAR)
             .quarterNumber(UPDATED_QUARTER_NUMBER)
-            .quaterlyReportLocation(UPDATED_QUATERLY_REPORT)
+            .quarterlyReportLocation(UPDATED_QUATERLY_REPORT)
             .companyCode(UPDATED_COMPANY_CODE)
             .createdDate(UPDATED_CREATED_DATE)
             .createdBy(UPDATED_CREATED_BY);
@@ -228,7 +228,7 @@ public class QuarterlyReportsResourceIntTest {
         QuarterlyReports testQuarterlyReports = quarterlyReportsList.get(quarterlyReportsList.size() - 1);
         assertThat(testQuarterlyReports.getYear()).isEqualTo(UPDATED_YEAR);
         assertThat(testQuarterlyReports.getQuarterNumber()).isEqualTo(UPDATED_QUARTER_NUMBER);
-        assertThat(testQuarterlyReports.getQuaterlyReportLocation()).isEqualTo(UPDATED_QUATERLY_REPORT);
+        assertThat(testQuarterlyReports.getQuarterlyReportLocation()).isEqualTo(UPDATED_QUATERLY_REPORT);
         assertThat(testQuarterlyReports.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
         assertThat(testQuarterlyReports.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testQuarterlyReports.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);

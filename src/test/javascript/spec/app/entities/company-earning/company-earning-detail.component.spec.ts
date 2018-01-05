@@ -43,7 +43,7 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.find).toHaveBeenCalledWith(123);
-                expect(comp.companyEarning).toEqual(jasmine.objectContaining({id: 123}));
+                expect(comp.companyEarningType).toEqual(jasmine.objectContaining({id: 123}));
             });
         });
     });

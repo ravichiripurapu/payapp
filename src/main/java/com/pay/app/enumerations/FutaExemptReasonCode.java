@@ -1,13 +1,17 @@
 package com.pay.app.enumerations;
 
-public enum BankAccountType {
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+public enum FutaExemptReasonCode  {
 
     SAVINGS("Savings"),
     CHECKINGS("Checkings");
 
     private String name;
 
-    BankAccountType(String name) {
+    FutaExemptReasonCode(String name) {
         this.name = name;
     }
 

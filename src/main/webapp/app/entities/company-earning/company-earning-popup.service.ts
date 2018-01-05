@@ -25,15 +25,15 @@ export class CompanyEarningPopupService {
             }
 
             if (id) {
-                this.companyEarningService.find(id).subscribe((companyEarning) => {
-                    if (companyEarning.createdDate) {
-                        companyEarning.createdDate = {
-                            year: companyEarning.createdDate.getFullYear(),
-                            month: companyEarning.createdDate.getMonth() + 1,
-                            day: companyEarning.createdDate.getDate()
+                this.companyEarningService.find(id).subscribe((companyEarningType) => {
+                    if (companyEarningType.createdDate) {
+                        companyEarningType.createdDate = {
+                            year: companyEarningType.createdDate.getFullYear(),
+                            month: companyEarningType.createdDate.getMonth() + 1,
+                            day: companyEarningType.createdDate.getDate()
                         };
                     }
-                    this.ngbModalRef = this.companyEarningModalRef(component, companyEarning);
+                    this.ngbModalRef = this.companyEarningModalRef(component, companyEarningType);
                     resolve(this.ngbModalRef);
                 });
             } else {
@@ -46,9 +46,9 @@ export class CompanyEarningPopupService {
         });
     }
 
-    companyEarningModalRef(component: Component, companyEarning: CompanyEarning): NgbModalRef {
+    companyEarningModalRef(component: Component, companyEarningType: CompanyEarning): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.companyEarning = companyEarning;
+        modalRef.componentInstance.companyEarningType = companyEarningType;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

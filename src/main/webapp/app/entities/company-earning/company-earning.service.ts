@@ -11,20 +11,20 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 @Injectable()
 export class CompanyEarningService {
 
-    private resourceUrl = SERVER_API_URL + 'api/company-earnings';
+    private resourceUrl = SERVER_API_URL + 'api/company-earning-types';
 
     constructor(private http: Http, private dateUtils: JhiDateUtils) { }
 
-    create(companyEarning: CompanyEarning): Observable<CompanyEarning> {
-        const copy = this.convert(companyEarning);
+    create(companyEarningType: CompanyEarning): Observable<CompanyEarning> {
+        const copy = this.convert(companyEarningType);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
         });
     }
 
-    update(companyEarning: CompanyEarning): Observable<CompanyEarning> {
-        const copy = this.convert(companyEarning);
+    update(companyEarningType: CompanyEarning): Observable<CompanyEarning> {
+        const copy = this.convert(companyEarningType);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             const jsonResponse = res.json();
             return this.convertItemFromServer(jsonResponse);
@@ -70,10 +70,10 @@ export class CompanyEarningService {
     /**
      * Convert a CompanyEarning to a JSON which can be sent to the server.
      */
-    private convert(companyEarning: CompanyEarning): CompanyEarning {
-        const copy: CompanyEarning = Object.assign({}, companyEarning);
+    private convert(companyEarningType: CompanyEarning): CompanyEarning {
+        const copy: CompanyEarning = Object.assign({}, companyEarningType);
         copy.createdDate = this.dateUtils
-            .convertLocalDateToServer(companyEarning.createdDate);
+            .convertLocalDateToServer(companyEarningType.createdDate);
         return copy;
     }
 }

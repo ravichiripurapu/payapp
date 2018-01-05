@@ -16,7 +16,7 @@ import { CompanyEarningService } from './company-earning.service';
 })
 export class CompanyEarningDialogComponent implements OnInit {
 
-    companyEarning: CompanyEarning;
+    companyEarningType: CompanyEarning;
     isSaving: boolean;
     createdDateDp: any;
 
@@ -37,12 +37,12 @@ export class CompanyEarningDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.companyEarning.id !== undefined) {
+        if (this.companyEarningType.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.companyEarningService.update(this.companyEarning));
+                this.companyEarningService.update(this.companyEarningType));
         } else {
             this.subscribeToSaveResponse(
-                this.companyEarningService.create(this.companyEarning));
+                this.companyEarningService.create(this.companyEarningType));
         }
     }
 
