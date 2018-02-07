@@ -5,7 +5,6 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171223053428_added_entity_EmployeeType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053437_added_entity_Company.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053438_added_entity_CompanyContact.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053439_added_entity_CompanyBank.xml" relativeToChangelogFile="false"/>
@@ -14,9 +13,7 @@
     <include file="config/liquibase/changelog/20171223053442_added_entity_CompanyDepartment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053443_added_entity_CompanyLocation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053444_added_entity_CompanyEarning.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171223053445_added_entity_CompanyCompensation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053446_added_entity_CompanyDeduction.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20171223053447_added_entity_Employee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053448_added_entity_EmployeeBank.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053449_added_entity_EmployeeFederalTax.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171223053450_added_entity_EmployeeStateTax.xml" relativeToChangelogFile="false"/>
